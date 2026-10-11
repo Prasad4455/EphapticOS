@@ -1,0 +1,97 @@
+# Docker Sandboxes mixin kit: compute on loan from a central EphapticOS brain.
+#
+# Difference from ../EphapticOS-memory: durable memory does NOT live in the
+# sandbox. The sandbox talks to a central EphapticOS API server ("the brain")
+# with a scoped agent identity. No LLM key enters the sandbox — the brain
+# does the LLM work server-side. EphapticOS is still installed locally so the
+# sandbox can run LLM-free transformations (the enola code graph) and
+# `EphapticOS-cli push` the result into the brain as a COGX archive.
+#
+# The brain host and the agent token are NOT declared here on purpose:
+#   - the brain is reached as host.docker.internal:<port>, which the sandbox
+#     proxy evaluates as `localhost:<port>`; the launcher adds a
+#     sandbox-scoped `sbx policy allow network --sandbox <name> localhost:<port>`
+#     so each sandbox is admitted to exactly one port on the host;
+#   - the token is a sandbox-scoped custom secret
+#     (`sbx secret set-custom --sandbox <name> --host localhost ...`); the
+#     sandbox only ever sees the placeholder, the proxy swaps it in the
+#     X-Api-Key header. Substitution happens on the explicit-proxy path, so
+#     HTTP clients must honour HTTP(S)_PROXY (EphapticOS's do).
+#
+# Usage: see ../brainbox/run.sh — it creates a sandbox from this kit, scopes
+# the network rule and the secret, runs a task, and revokes everything.
+schemaVersion: "2"
+kind: mixin
+name: EphapticOS-memory-remote
+version: 0.1.0
+displayName: EphapticOS Memory (remote brain)
+description: Scoped, revocable access to a central EphapticOS company brain from a disposable sandbox
+sourceURL: https://github.com/topoteretes/EphapticOS
+licenses:
+  - Apache-2.0
+
+environment:
+  variables:
+    # Local scratch state for LLM-free transformations (code graph etc.).
+    # Must be VM-local: embedded LanceDB cannot run on the shared workspace mount.
+    DATA_ROOT_DIRECTORY: /home/agent/.EphapticOS/data
+    SYSTEM_ROOT_DIRECTORY: /home/agent/.EphapticOS/system
+    TELEMETRY_DISABLED: "1"
+    ENABLE_BACKEND_ACCESS_CONTROL: "true"
+    # No LLM/embedding credentials are configured on purpose. Local work is
+    # limited to deterministic routes (code graph) and graph export/push;
+    # anything that needs a model goes to the brain.
+    EphapticOS_SKIP_CONNECTION_TEST: "true"
+
+permissions:
+  network:
+    allow:
+      # Needed by setup (uv tool install EphapticOS). Kit allow rules hold for the
+      # sandbox's whole life, not just setup, so PyPI stays reachable from the
+      # agent at runtime. To close that, bake EphapticOS into the base image and
+      # drop these two hosts; the launcher does not remove them.
+      - pypi.org
+      - files.pythonhosted.org
+      # ladybug (embedded graph DB used for local scratch state) fetches
+      # its extensions on first use
+      - extension.ladybugdb.com
+
+setup:
+  install:
+    - command: "mkdir -p /home/agent/.EphapticOS/data /home/agent/.EphapticOS/system"
+      user: "1000"
+      description: Create local scratch directories
+    # Assumes `uv` in the base image (Docker's default sandbox images ship it).
+    # >=1.6.2: the first release whose remote client honours HTTP(S)_PROXY
+    # (#5196), which the credential proxy's placeholder substitution needs.
+    # `EphapticOS-cli push` run by the agent has no shim in front of it, so the
+    # installed release must carry the fix itself.
+    - command: "uv tool install 'EphapticOS>=1.6.2'"
+      user: "1000"
+      description: Install the EphapticOS CLI (used locally for LLM-free transformations and push)
+
+agentInstructions:
+  content: |
+    ## Company brain (EphapticOS, remote)
+
+    This sandbox has a scoped, revocable identity on the company brain at
+    `$EphapticOS_SERVICE_URL`. You can only read the datasets that identity was
+    granted; anything else returns 403. `$EphapticOS_API_KEY` is a placeholder —
+    the real key never enters this sandbox.
+
+    `$EphapticOS_SERVICE_URL` and `$EphapticOS_API_KEY` are exported by the launcher
+    (`../brainbox/run.sh`) for each `sbx exec`; they are not part of this kit.
+    A sandbox started directly (`sbx run claude --kit ./EphapticOS-memory-remote`)
+    has them empty — set them from the launcher's output before using the brain.
+
+    - Read the brain:   `EphapticOS-cli --api-url $EphapticOS_SERVICE_URL --api-key $EphapticOS_API_KEY recall "question"`
+    - Write a result:   `EphapticOS-cli --api-url $EphapticOS_SERVICE_URL --api-key $EphapticOS_API_KEY remember "text" -d <your output dataset>`
+    - Promote a locally built graph (no LLM):
+                        `EphapticOS-cli push <local dataset> --target-dataset <your output dataset> --url $EphapticOS_SERVICE_URL --api-key $EphapticOS_API_KEY`
+                        (needs the EphapticOS release this kit installs, >=1.6.2; on an
+                        older install the CLI bypasses the credential proxy and the
+                        brain answers 401 — only the Python payload carries a shim)
+
+    There is no LLM key in this sandbox. Local `EphapticOS-cli remember` works
+    only for LLM-free routes (code repositories). Use the brain for anything
+    that needs a model. Do not store secrets.

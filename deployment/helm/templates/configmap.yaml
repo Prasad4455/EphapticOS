@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "EphapticOS.fullname" . }}-config
+  labels:
+    {{- include "EphapticOS.labels" . | nindent 4 }}
+data:
+  ENV: {{ .Values.EphapticOS.env | quote }}
+  PYTHONPATH: "."
+  DB_PROVIDER: "postgres"
+  DB_HOST: {{ include "EphapticOS.postgres.fullname" . }}
+  DB_PORT: {{ .Values.postgres.port | quote }}
+  DB_NAME: {{ .Values.postgres.auth.database | quote }}
+  DB_USERNAME: {{ .Values.postgres.auth.username | quote }}
+  VECTOR_DB_PROVIDER: {{ .Values.EphapticOS.vectorDbProvider | quote }}
+  LLM_PROVIDER: {{ .Values.EphapticOS.llmProvider | quote }}
+  LLM_MODEL: {{ .Values.EphapticOS.llmModel | quote }}
+  ENABLE_BACKEND_ACCESS_CONTROL: {{ .Values.EphapticOS.enableBackendAccessControl | quote }}

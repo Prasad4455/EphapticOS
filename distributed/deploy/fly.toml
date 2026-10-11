@@ -1,0 +1,50 @@
+# Fly.io deployment configuration for EphapticOS
+#
+# Deploy:
+#   fly apps create EphapticOS
+#   fly secrets set LLM_API_KEY=sk-xxx LLM_MODEL=openai/gpt-4o-mini
+#   fly volumes create EphapticOS_data --size 10 --region iad
+#   fly deploy
+
+app = "EphapticOS"
+primary_region = "iad"
+
+[build]
+dockerfile = "Dockerfile"
+
+[env]
+HOST = "0.0.0.0"
+ENVIRONMENT = "prod"
+DATA_ROOT_DIRECTORY = "/data/EphapticOS_data"
+SYSTEM_ROOT_DIRECTORY = "/data/EphapticOS_system"
+
+[http_service]
+internal_port = 8000
+force_https = true
+auto_stop_machines = "stop"
+auto_start_machines = true
+min_machines_running = 0
+
+[http_service.concurrency]
+type = "requests"
+hard_limit = 50
+soft_limit = 25
+
+[checks]
+  [checks.health]
+  port = 8000
+  type = "http"
+  interval = 30000
+  timeout = 5000
+  grace_period = "30s"
+  method = "GET"
+  path = "/health"
+
+[mounts]
+source = "EphapticOS_data"
+destination = "/data"
+
+[[vm]]
+memory = "2gb"
+cpu_kind = "shared"
+cpus = 2

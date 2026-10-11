@@ -1,0 +1,11 @@
+[project]
+name = "EphapticOS-starter"
+version = "0.1.1"
+description = "Starter project which can be harvested for parts"
+readme = "README.md"
+
+requires-python = ">=3.10,<3.15"
+
+dependencies = [
+    "EphapticOS>=1.0.0,<2.0.0",
+]
