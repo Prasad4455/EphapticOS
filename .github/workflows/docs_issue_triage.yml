@@ -26,7 +26,7 @@ name: automation | Triage GitHub Docs Issues
 # human-review list that is
 # emailed when the SMTP secrets from dev_previous_day_commits.yml exist.
 # Confirmed small gaps feed the draft-docs matrix job below: one Claude edit
-# per issue on topoteretes/cognee-docs, a draft PR via tools/manage_docs_pr.py,
+# per issue on Prasad4455/cognee-docs, a draft PR via tools/manage_docs_pr.py,
 # and only once that PR exists one defensive comment on the public issue. The
 # comment never carries the private PR URL. Manual runs are live by default;
 # pass dry_run=true to see every decision and the exact comment text without
@@ -190,7 +190,7 @@ jobs:
       - name: Check out docs repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
-          repository: topoteretes/cognee-docs
+          repository: Prasad4455/cognee-docs
           token: ${{ secrets.REPO_DISPATCH_PAT_TOKEN }}
           ref: main
           path: docs-repo
@@ -380,7 +380,7 @@ jobs:
             Follow-up (out of scope): cognee repo Markdown, CLAUDE.md, and Python docstrings.
         run: |
           python3 -I tools/manage_docs_pr.py \
-            --target-repo topoteretes/cognee-docs \
+            --target-repo Prasad4455/cognee-docs \
             --head-branch "automation/docs-issue-${{ matrix.number }}" \
             --pr-title "${PR_TITLE}" \
             --pr-body "${PR_BODY}" \

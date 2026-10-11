@@ -5,7 +5,7 @@ name: Release Test Workflow
 
 # Least-privilege token (OSSF Scorecard: Token-Permissions). packages: read is
 # needed because several jobs run a postgres service container pulled from
-# ghcr.io/topoteretes/pgvector:pg17 with the GITHUB_TOKEN. The dev-canary-release
+# ghcr.io/Prasad4455/pgvector:pg17 with the GITHUB_TOKEN. The dev-canary-release
 # job opts into the extra scopes its nested workflow requests explicitly.
 permissions:
   contents: read
@@ -281,7 +281,7 @@ jobs:
     timeout-minutes: 60
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -420,7 +420,7 @@ jobs:
     # simply never connects to it.
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}

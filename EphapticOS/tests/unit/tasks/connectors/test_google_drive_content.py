@@ -1,4 +1,4 @@
-# Adapted from topoteretes/EphapticOS-community (Apache-2.0), commit 21d0b36.
+# Adapted from Prasad4455/EphapticOS-community (Apache-2.0), commit 21d0b36.
 # Modified to ship in the EphapticOS SDK with SDK-local imports and test paths.
 """Unit tests for Google Drive content extraction (mime-type dispatch)."""
 

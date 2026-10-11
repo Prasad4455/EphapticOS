@@ -249,7 +249,7 @@ jobs:
           --health-timeout 5s
           --health-retries 12
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -385,7 +385,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -824,7 +824,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -1129,7 +1129,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -1227,7 +1227,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -1296,7 +1296,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -1442,7 +1442,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -1536,7 +1536,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -2066,7 +2066,7 @@ jobs:
 
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -2202,7 +2202,7 @@ jobs:
         shell: bash
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}

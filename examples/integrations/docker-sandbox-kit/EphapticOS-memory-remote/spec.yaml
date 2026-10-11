@@ -26,7 +26,7 @@ name: EphapticOS-memory-remote
 version: 0.1.0
 displayName: EphapticOS Memory (remote brain)
 description: Scoped, revocable access to a central EphapticOS company brain from a disposable sandbox
-sourceURL: https://github.com/topoteretes/EphapticOS
+sourceURL: https://github.com/Prasad4455/EphapticOS
 licenses:
   - Apache-2.0
 

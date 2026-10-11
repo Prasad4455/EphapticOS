@@ -25,8 +25,8 @@ jobs:
           echo "" >> CONTRIBUTORS.md
           echo "Thanks to our amazing contributors! 💖" >> CONTRIBUTORS.md
           echo "" >> CONTRIBUTORS.md
-          echo '<a href="https://github.com/topoteretes/cognee/graphs/contributors">' >> CONTRIBUTORS.md
-          echo '  <img src="https://contrib.rocks/image?repo=topoteretes/cognee" />' >> CONTRIBUTORS.md
+          echo '<a href="https://github.com/Prasad4455/cognee/graphs/contributors">' >> CONTRIBUTORS.md
+          echo '  <img src="https://contrib.rocks/image?repo=Prasad4455/cognee" />' >> CONTRIBUTORS.md
           echo '</a>' >> CONTRIBUTORS.md
           echo "" >> CONTRIBUTORS.md
           echo "## 🏆 Top Contributors" >> CONTRIBUTORS.md

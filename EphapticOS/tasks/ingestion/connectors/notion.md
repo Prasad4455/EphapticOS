@@ -1,6 +1,6 @@
 # Notion SDK connector
 
-A Notion data-source connector for [EphapticOS](https://github.com/topoteretes/EphapticOS): sync
+A Notion data-source connector for [EphapticOS](https://github.com/Prasad4455/EphapticOS): sync
 explicit Notion pages and/or database rows into memory, incrementally, with forget-on-delete.
 
 It exposes a `dlt` source you hand to `EphapticOS.remember(...)`, reusing EphapticOS's existing DLT

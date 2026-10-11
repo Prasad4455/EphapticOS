@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/topoteretes/EphapticOS/catalog/schema.json",
+  "$id": "https://github.com/Prasad4455/EphapticOS/catalog/schema.json",
   "title": "EphapticOSCatalogEntry",
   "description": "Schema for a single entry in the EphapticOS Integrations Hub and Use-Case Gallery. One YAML file under catalog/entries/{integrations,use-cases,packages}/ per entry. See docs/contributing/add-catalog-entry.md.",
   "type": "object",
@@ -34,7 +34,11 @@
     "kind": {
       "type": "string",
       "description": "Which view an entry belongs to. Integrations and packages appear in the Integrations Hub; use-cases appear in the Use-Case Gallery.",
-      "enum": ["integration", "use-case", "package"]
+      "enum": [
+        "integration",
+        "use-case",
+        "package"
+      ]
     },
     "stack": {
       "type": "string",
@@ -90,7 +94,11 @@
     "difficulty": {
       "type": "string",
       "description": "Rough effort estimate for a new user, not a code-complexity rating.",
-      "enum": ["easy", "medium", "advanced"]
+      "enum": [
+        "easy",
+        "medium",
+        "advanced"
+      ]
     },
     "repo": {
       "type": "string",
@@ -125,18 +133,34 @@
   "allOf": [
     {
       "if": {
-        "properties": {"kind": {"enum": ["integration", "package"]}}
+        "properties": {
+          "kind": {
+            "enum": [
+              "integration",
+              "package"
+            ]
+          }
+        }
       },
       "then": {
-        "required": ["repo", "path"]
+        "required": [
+          "repo",
+          "path"
+        ]
       }
     },
     {
       "if": {
-        "properties": {"kind": {"const": "use-case"}}
+        "properties": {
+          "kind": {
+            "const": "use-case"
+          }
+        }
       },
       "then": {
-        "required": ["example_path"]
+        "required": [
+          "example_path"
+        ]
       }
     }
   ]

@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/topoteretes/EphapticOS">
-    <img src="https://raw.githubusercontent.com/topoteretes/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
+  <a href="https://github.com/Prasad4455/EphapticOS">
+    <img src="https://raw.githubusercontent.com/Prasad4455/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
   </a>
 
   <br />
@@ -18,18 +18,18 @@
   ·
   <a href="https://www.reddit.com/r/AIMemory/">r/AIMemory 참여</a>
   .
-  <a href="https://github.com/topoteretes/EphapticOS-community">커뮤니티 플러그인 & 애드온</a>
+  <a href="https://github.com/Prasad4455/EphapticOS-community">커뮤니티 플러그인 & 애드온</a>
   </p>
 
 
-  [![GitHub forks](https://img.shields.io/github/forks/topoteretes/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/topoteretes/EphapticOS/network/)
-  [![GitHub stars](https://img.shields.io/github/stars/topoteretes/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://github.com/topoteretes/EphapticOS)
-  [![GitHub commits](https://badgen.net/github/commits/topoteretes/EphapticOS)](https://GitHub.com/topoteretes/EphapticOS/commit/)
-  [![GitHub tag](https://badgen.net/github/tag/topoteretes/EphapticOS)](https://github.com/topoteretes/EphapticOS/tags/)
+  [![GitHub forks](https://img.shields.io/github/forks/Prasad4455/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/Prasad4455/EphapticOS/network/)
+  [![GitHub stars](https://img.shields.io/github/stars/Prasad4455/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://github.com/Prasad4455/EphapticOS)
+  [![GitHub commits](https://badgen.net/github/commits/Prasad4455/EphapticOS)](https://GitHub.com/Prasad4455/EphapticOS/commit/)
+  [![GitHub tag](https://badgen.net/github/tag/Prasad4455/EphapticOS)](https://github.com/Prasad4455/EphapticOS/tags/)
   [![Downloads](https://static.pepy.tech/badge/EphapticOS)](https://pepy.tech/project/EphapticOS)
-  [![License](https://img.shields.io/github/license/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/blob/main/LICENSE)
-  [![Contributors](https://img.shields.io/github/contributors/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/graphs/contributors)
-  <a href="https://github.com/sponsors/topoteretes"><img src="https://img.shields.io/badge/Sponsor-❤️-ff69b4.svg" alt="Sponsor"></a>
+  [![License](https://img.shields.io/github/license/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/blob/main/LICENSE)
+  [![Contributors](https://img.shields.io/github/contributors/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/graphs/contributors)
+  <a href="https://github.com/sponsors/Prasad4455"><img src="https://img.shields.io/badge/Sponsor-❤️-ff69b4.svg" alt="Sponsor"></a>
 
 <p>
   <a href="https://www.producthunt.com/posts/EphapticOS?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-EphapticOS" target="_blank" style="display:inline-block; margin-right:10px;">
@@ -37,7 +37,7 @@
   </a>
 
   <a href="https://trendshift.io/repositories/13955" target="_blank" style="display:inline-block;">
-    <img src="https://trendshift.io/api/badge/repositories/13955" alt="topoteretes%2FEphapticOS | Trendshift" width="250" height="55" />
+    <img src="https://trendshift.io/api/badge/repositories/13955" alt="Prasad4455%2FEphapticOS | Trendshift" width="250" height="55" />
   </a>
 </p>
 
@@ -47,19 +47,19 @@
   🌐 사용 가능한 언어
   :
   <!-- Keep these links. Translations will automatically update with the README. -->
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=de">Deutsch</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=es">Español</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=fr">Français</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=ja">日本語</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=de">Deutsch</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=es">Español</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=fr">Français</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=ja">日本語</a> |
   <a href="README_ko.md">한국어</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=pt">Português</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=ru">Русский</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=zh">中文</a>
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=pt">Português</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=ru">Русский</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=zh">中文</a>
   </p>
 
 
 <div style="text-align: center">
-  <img src="https://raw.githubusercontent.com/topoteretes/EphapticOS/refs/heads/main/assets/EphapticOS_benefits.png" alt="Why EphapticOS?" width="50%" />
+  <img src="https://raw.githubusercontent.com/Prasad4455/EphapticOS/refs/heads/main/assets/EphapticOS_benefits.png" alt="Why EphapticOS?" width="50%" />
 </div>
 </div>
 
@@ -114,7 +114,7 @@ import os
 
 os.environ["LLM_API_KEY"] = "YOUR OPENAI_API_KEY"
 ```
-또는 [템플릿](https://github.com/topoteretes/EphapticOS/blob/main/.env.template)을 사용하여 `.env` 파일을 생성하세요.
+또는 [템플릿](https://github.com/Prasad4455/EphapticOS/blob/main/.env.template)을 사용하여 `.env` 파일을 생성하세요.
 
 다른 LLM 공급자를 통합하려면 [LLM 공급자 문서](https://docs.EphapticOS.ai/setup-configuration/llm-providers)를 참조하세요.
 
@@ -201,7 +201,7 @@ EphapticOS 작동 모습 확인:
 
 ### 규칙
 
-우리는 포용적이고 존중하는 커뮤니티를 만들기 위해 노력하고 있습니다. 규칙은 [규칙 문서](https://github.com/topoteretes/EphapticOS/blob/main/CODE_OF_CONDUCT.md)를 확인해주세요.
+우리는 포용적이고 존중하는 커뮤니티를 만들기 위해 노력하고 있습니다. 규칙은 [규칙 문서](https://github.com/Prasad4455/EphapticOS/blob/main/CODE_OF_CONDUCT.md)를 확인해주세요.
 
 ## 연구 및 인용
 

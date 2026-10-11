@@ -6,7 +6,7 @@ description: Use when the user needs something that ships outside cognee core â€
 # Use and contribute cognee-community packages
 
 Community-maintained plugins live in a separate monorepo:
-https://github.com/topoteretes/cognee-community. Everything installable is
+https://github.com/Prasad4455/cognee-community. Everything installable is
 under `packages/`; `experimental/` holds demos (n8n nodes, dlt demos,
 bauplan, tower) that are not published packages. Each package publishes to
 PyPI as `cognee-community-<family>-<kind>-<name>` and imports as the same

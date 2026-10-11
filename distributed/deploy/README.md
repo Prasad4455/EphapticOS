@@ -168,7 +168,7 @@ For contributors who want a pre-configured development environment. Uses `.devco
 
 ### GitHub Codespaces
 ```bash
-gh codespace create --repo topoteretes/EphapticOS
+gh codespace create --repo Prasad4455/EphapticOS
 ```
 
 ### VS Code Dev Containers

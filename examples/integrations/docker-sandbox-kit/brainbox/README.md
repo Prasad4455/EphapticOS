@@ -57,7 +57,7 @@ Outputs land in `work/<sandbox>/out/` (`architecture.html`, `architecture.mmd`,
   rule. Rules can be sandbox-scoped and port-specific.
 - **Placeholder substitution needs the proxy path.** Clients must honour
   `HTTP(S)_PROXY`; `aiohttp` does not by default (`trust_env=True`). Fixed in
-  EphapticOS's `CloudClient` by [#5196](https://github.com/topoteretes/EphapticOS/pull/5196),
+  EphapticOS's `CloudClient` by [#5196](https://github.com/Prasad4455/EphapticOS/pull/5196),
   shipped in 1.6.2 — the kit installs `EphapticOS>=1.6.2` so `EphapticOS-cli push` run
   by the agent (no shim in front of it) goes through the proxy too.
   `tasks/_compat.py` still detects an older installed release and shims aiohttp

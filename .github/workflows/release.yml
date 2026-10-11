@@ -169,7 +169,7 @@ jobs:
         # Scorecard: Signed-Releases). Upload the wheel and sdist together with
         # the SLSA build-provenance attestation in two shapes: the Sigstore
         # bundle (certificate + signature + statement; verify with
-        # `gh attestation verify <dist> --bundle <file> --owner topoteretes`)
+        # `gh attestation verify <dist> --bundle <file> --owner Prasad4455`)
         # and the bare DSSE envelope it wraps, in the .intoto.jsonl form the
         # SLSA ecosystem expects. Runs after publish so a PyPI failure leaves
         # the release page without artifacts that never shipped.
@@ -521,7 +521,7 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.REPO_DISPATCH_PAT_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/topoteretes/cognee-docs/dispatches \
+            https://api.github.com/repos/Prasad4455/cognee-docs/dispatches \
             -d '{"event_type":"new-main-release","client_payload":{"caller_repo":"'"${GITHUB_REPOSITORY}"'"}}'
 
   trigger-community-test-suite:
@@ -535,7 +535,7 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.REPO_DISPATCH_PAT_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/topoteretes/cognee-community/dispatches \
+            https://api.github.com/repos/Prasad4455/cognee-community/dispatches \
             -d '{"event_type":"new-main-release","client_payload":{"caller_repo":"'"${GITHUB_REPOSITORY}"'"}}'
 
   notify-discord:

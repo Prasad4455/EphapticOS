@@ -9,7 +9,7 @@ Historically node IDs were generated from the bare name::
 
 so ``Entity("institution")`` and ``EntityType("institution")`` hashed to the
 *same* UUID, which caused ``EntityAlreadyExistsError`` on a second ``Ephaptify``
-(topoteretes/EphapticOS#2515 / issue #2510).
+(Prasad4455/EphapticOS#2515 / issue #2510).
 
 IDs are now derived by the model itself via ``DataPoint.id_for`` —
 ``uuid5(NAMESPACE_OID, f"{ClassName}:{normalized_value}")`` — so the namespace

@@ -19,7 +19,7 @@ expected_output: |
   A search response referencing files in the ingested codebase, with cognee
   running locally against SQLite + LanceDB + Ladybug.
 difficulty: easy
-repo: topoteretes/cognee-integrations
+repo: Prasad4455/cognee-integrations
 path: integrations/codex
 inventory_slug: codex
 docs_url: https://docs.cognee.ai/integrations/codex

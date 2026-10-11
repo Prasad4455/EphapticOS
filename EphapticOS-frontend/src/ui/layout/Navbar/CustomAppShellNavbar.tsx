@@ -282,7 +282,7 @@ export default function CustomAppShellNavbar() {
             {!railed && "Give feedback"}
           </button>
           <Link
-            href="https://calendly.com/luca-topoteretes/new-meeting"
+            href="https://calendly.com/luca-Prasad4455/new-meeting"
             target="_blank"
             rel="noopener noreferrer"
             title={railed ? "Book a call" : undefined}

@@ -4,7 +4,7 @@ EphapticOS's remote client (`serve`/`push`) opened its aiohttp session without
 `trust_env=True`, so it ignored HTTP(S)_PROXY. Inside a Docker Sandbox that
 means the request goes around the credential proxy and the placeholder API
 key is never substituted (the brain answers 401). Fix upstream:
-https://github.com/topoteretes/EphapticOS/pull/5196, shipped in 1.6.2 — which the
+https://github.com/Prasad4455/EphapticOS/pull/5196, shipped in 1.6.2 — which the
 kit now installs (`EphapticOS>=1.6.2`). This shim stays as a safety net for an
 older install, and it only covers this Python payload: a `EphapticOS-cli push` the
 agent runs as its own process does not pass through here.

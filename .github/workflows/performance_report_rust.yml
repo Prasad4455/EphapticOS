@@ -102,7 +102,7 @@ jobs:
       - name: Checkout cognee-rs (latest)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
-          repository: topoteretes/cognee-rs
+          repository: Prasad4455/cognee-rs
           ref: ${{ inputs.cognee_rs_ref }}
           path: cognee-rs
 
@@ -302,7 +302,7 @@ jobs:
           COMMIT_TIMESTAMP="$(git -C cognee-rs show -s --format=%cI HEAD)"
           # Attribute timings to the Rust code and retain the Python harness SHA.
           WORKFLOW_SHA="$(git rev-parse HEAD)"
-          REPOSITORY="topoteretes/cognee-rs"
+          REPOSITORY="Prasad4455/cognee-rs"
           tmp="$(mktemp)"
           jq --arg branch "$BRANCH" --arg sha "$SHA" --arg run_id "$RUN_ID" \
              --arg attempt "$RUN_ATTEMPT" --arg event "$EVENT" \

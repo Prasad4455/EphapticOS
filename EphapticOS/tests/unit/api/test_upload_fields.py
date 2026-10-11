@@ -112,13 +112,13 @@ def test_remember_code_ingestion_with_blank_data_part(client, fake_remember):
         data={
             "datasetName": "ds",
             "content_type": "code",
-            "raw_data": "https://github.com/topoteretes/EphapticOS",
+            "raw_data": "https://github.com/Prasad4455/EphapticOS",
             "node_set": "",
             "index_vectors": "false",
         },
     )
     assert response.status_code == 200, response.text
-    assert fake_remember["data"] == ["https://github.com/topoteretes/EphapticOS"]
+    assert fake_remember["data"] == ["https://github.com/Prasad4455/EphapticOS"]
     assert fake_remember["kwargs"]["content_type"] == "code"
 
 

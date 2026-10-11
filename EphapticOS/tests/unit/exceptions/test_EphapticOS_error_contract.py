@@ -1,6 +1,6 @@
 """Contract tests for the ``EphapticOSApiError`` exception hierarchy.
 
-Regression guard for https://github.com/topoteretes/EphapticOS/issues/3749, where
+Regression guard for https://github.com/Prasad4455/EphapticOS/issues/3749, where
 ``EntityNotFoundError`` and ``NodesetFilterNotSupportedError`` (and, with the
 same root cause, ``WrongTaskTypeError``) overrode ``__init__`` but never called
 ``super().__init__()``. That left ``Exception.args`` empty, breaking ``repr``,

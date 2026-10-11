@@ -19,7 +19,7 @@ expected_output: |
   can recall past context on request. Confirm by triggering a recall and
   seeing prior turn content in the response.
 difficulty: easy
-repo: topoteretes/cognee-integrations
+repo: Prasad4455/cognee-integrations
 path: integrations/openclaw
 inventory_slug: openclaw
 docs_url: https://docs.cognee.ai/integrations/openclaw

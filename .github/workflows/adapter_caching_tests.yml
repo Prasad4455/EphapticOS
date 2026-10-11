@@ -113,7 +113,7 @@ jobs:
     if: ${{ inputs.databases == 'all' || contains(inputs.databases, 'ladybug/pgvector/postgres') }}
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -166,7 +166,7 @@ jobs:
     if: ${{ inputs.databases == 'all' || contains(inputs.databases, 'neo4j/pgvector/postgres') }}
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -227,7 +227,7 @@ jobs:
     if: ${{ inputs.databases == 'all' || contains(inputs.databases, 'postgres/pgvector/postgres') }}
     services:
       postgres:
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}

@@ -22,7 +22,7 @@ jobs:
             const authorAssociation = context.payload.pull_request.author_association;
 
             // Exact text you require in the PR body
-            const requiredStatement = "I affirm that all code in every commit of this pull request conforms to the terms of the Topoteretes Developer Certificate of Origin";
+            const requiredStatement = "I affirm that all code in every commit of this pull request conforms to the terms of the Prasad4455 Developer Certificate of Origin";
 
             // 1. Check if user is an org member via author_association
             //    (available on the PR payload without extra API calls or permissions)

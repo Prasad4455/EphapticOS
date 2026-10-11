@@ -17,7 +17,7 @@ function brainStateOf(nodes: BusinessGraphNode[]): BrainState {
 }
 
 function indexWithDataset(datasetId: string, name: string, holderIds: string[]): GovernanceIndex {
-  const users = holderIds.map((id) => ({ id, name: `${id}@topoteretes.com`, type: "User" }));
+  const users = holderIds.map((id) => ({ id, name: `${id}@Prasad4455.com`, type: "User" }));
   const access: GovernanceIndex["access"] = {};
   holderIds.forEach((id, i) => {
     access[id] = { [datasetId]: { owns: i === 0, perms: new Set(["read"]) } };
@@ -81,7 +81,7 @@ describe("computeViewingNarration", () => {
       brainStateOf([entityNode("e1", ["slack"])]),
     );
 
-    expect(line).toContain("team brain shared by u1@topoteretes.com (owner), u2@topoteretes.com");
+    expect(line).toContain("team brain shared by u1@Prasad4455.com (owner), u2@Prasad4455.com");
   });
 
   it("falls back to workspace wording and a default name when governance knows nothing about the dataset", () => {

@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/topoteretes/EphapticOS">
-    <img src="https://raw.githubusercontent.com/topoteretes/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
+  <a href="https://github.com/Prasad4455/EphapticOS">
+    <img src="https://raw.githubusercontent.com/Prasad4455/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
   </a>
 
   <br />
@@ -17,13 +17,13 @@
 
 
 
-  [![GitHub forks](https://img.shields.io/github/forks/topoteretes/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/topoteretes/EphapticOS/network/)
-  [![GitHub stars](https://img.shields.io/github/stars/topoteretes/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/topoteretes/EphapticOS/stargazers/)
-  [![GitHub commits](https://badgen.net/github/commits/topoteretes/EphapticOS)](https://GitHub.com/topoteretes/EphapticOS/commit/)
-  [![Github tag](https://badgen.net/github/tag/topoteretes/EphapticOS)](https://github.com/topoteretes/EphapticOS/tags/)
+  [![GitHub forks](https://img.shields.io/github/forks/Prasad4455/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/Prasad4455/EphapticOS/network/)
+  [![GitHub stars](https://img.shields.io/github/stars/Prasad4455/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Prasad4455/EphapticOS/stargazers/)
+  [![GitHub commits](https://badgen.net/github/commits/Prasad4455/EphapticOS)](https://GitHub.com/Prasad4455/EphapticOS/commit/)
+  [![Github tag](https://badgen.net/github/tag/Prasad4455/EphapticOS)](https://github.com/Prasad4455/EphapticOS/tags/)
   [![Downloads](https://static.pepy.tech/badge/EphapticOS)](https://pepy.tech/project/EphapticOS)
-  [![License](https://img.shields.io/github/license/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/blob/main/LICENSE)
-  [![Contributors](https://img.shields.io/github/contributors/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/graphs/contributors)
+  [![License](https://img.shields.io/github/license/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/blob/main/LICENSE)
+  [![Contributors](https://img.shields.io/github/contributors/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/graphs/contributors)
 
 <a href="https://www.producthunt.com/posts/EphapticOS?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-EphapticOS" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=946346&theme=light&period=daily&t=1744472480704" alt="EphapticOS - Memory&#0032;for&#0032;AI&#0032;Agents&#0032;&#0032;in&#0032;5&#0032;lines&#0032;of&#0032;code | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
@@ -31,10 +31,10 @@
 
 Crie uma memória dinâmica para Agentes usando pipelines ECL (Extrair, Cognificar, Carregar) escaláveis e modulares.
 
-Saiba mais sobre os [casos de uso](https://docs.EphapticOS.ai/use-cases) e [avaliações](https://github.com/topoteretes/EphapticOS/tree/main/evals)
+Saiba mais sobre os [casos de uso](https://docs.EphapticOS.ai/use-cases) e [avaliações](https://github.com/Prasad4455/EphapticOS/tree/main/evals)
 
 <div style="text-align: center">
-  <img src="https://raw.githubusercontent.com/topoteretes/EphapticOS/refs/heads/main/assets/EphapticOS_benefits.png" alt="Por que EphapticOS?" width="50%" />
+  <img src="https://raw.githubusercontent.com/Prasad4455/EphapticOS/refs/heads/main/assets/EphapticOS_benefits.png" alt="Por que EphapticOS?" width="50%" />
 </div>
 
 </div>
@@ -50,7 +50,7 @@ Saiba mais sobre os [casos de uso](https://docs.EphapticOS.ai/use-cases) e [aval
 
 ## Primeiros Passos
 
-Dê os primeiros passos com facilidade usando um Google Colab  <a href="https://colab.research.google.com/drive/1g-Qnx6l_ecHZi0IOw23rg0qC4TYvEvWZ?usp=sharing">notebook</a>  ou um <a href="https://github.com/topoteretes/EphapticOS-starter">repositório inicial</a>
+Dê os primeiros passos com facilidade usando um Google Colab  <a href="https://colab.research.google.com/drive/1g-Qnx6l_ecHZi0IOw23rg0qC4TYvEvWZ?usp=sharing">notebook</a>  ou um <a href="https://github.com/Prasad4455/EphapticOS-starter">repositório inicial</a>
 
 ## Contribuindo
 
@@ -75,7 +75,7 @@ import os
 os.environ["LLM_API_KEY"] = "SUA_OPENAI_API_KEY"
 ```
 
-Você também pode definir as variáveis criando um arquivo .env, usando o nosso <a href="https://github.com/topoteretes/EphapticOS/blob/main/.env.template">modelo</a>.
+Você também pode definir as variáveis criando um arquivo .env, usando o nosso <a href="https://github.com/Prasad4455/EphapticOS/blob/main/.env.template">modelo</a>.
 Para usar diferentes provedores de LLM, consulte nossa <a href="https://docs.EphapticOS.ai">documentação</a> .
 
 ### Exemplo simples
@@ -114,8 +114,8 @@ Exemplo do output:
 ```
 
 Visualização do grafo:
-<a href="https://rawcdn.githack.com/topoteretes/EphapticOS/refs/heads/main/assets/graph_visualization.html"><img src="graph_visualization_pt.png" width="100%" alt="Visualização do Grafo"></a>
-Abra no [navegador](https://rawcdn.githack.com/topoteretes/EphapticOS/refs/heads/main/assets/graph_visualization.html).
+<a href="https://rawcdn.githack.com/Prasad4455/EphapticOS/refs/heads/main/assets/graph_visualization.html"><img src="graph_visualization_pt.png" width="100%" alt="Visualização do Grafo"></a>
+Abra no [navegador](https://rawcdn.githack.com/Prasad4455/EphapticOS/refs/heads/main/assets/graph_visualization.html).
 
 
 Para um uso mais avançado, confira nossa <a href="https://docs.EphapticOS.ai">documentação</a>.
@@ -124,7 +124,7 @@ Para um uso mais avançado, confira nossa <a href="https://docs.EphapticOS.ai">d
 ## Entenda nossa arquitetura
 
 <div style="text-align: center">
-  <img src="https://raw.githubusercontent.com/topoteretes/EphapticOS/refs/heads/main/assets/EphapticOS_diagram.png" alt="diagrama conceitual do EphapticOS" width="100%" />
+  <img src="https://raw.githubusercontent.com/Prasad4455/EphapticOS/refs/heads/main/assets/EphapticOS_diagram.png" alt="diagrama conceitual do EphapticOS" width="100%" />
 </div>
 
 ## Demonstrações
@@ -146,10 +146,10 @@ Estamos comprometidos em tornar o open source uma experiência agradável e resp
 
 ## 💫 Contribuidores
 
-<a href="https://github.com/topoteretes/EphapticOS/graphs/contributors">
-  <img alt="contribuidores" src="https://contrib.rocks/image?repo=topoteretes/EphapticOS"/>
+<a href="https://github.com/Prasad4455/EphapticOS/graphs/contributors">
+  <img alt="contribuidores" src="https://contrib.rocks/image?repo=Prasad4455/EphapticOS"/>
 </a>
 
 ## Histórico de Estrelas
 
-[![Gráfico de Histórico de Estrelas](https://api.star-history.com/svg?repos=topoteretes/EphapticOS&type=Date)](https://star-history.com/#topoteretes/EphapticOS&Date)
+[![Gráfico de Histórico de Estrelas](https://api.star-history.com/svg?repos=Prasad4455/EphapticOS&type=Date)](https://star-history.com/#Prasad4455/EphapticOS&Date)

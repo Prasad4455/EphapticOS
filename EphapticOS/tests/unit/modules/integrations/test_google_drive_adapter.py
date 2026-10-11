@@ -30,8 +30,8 @@ _TOKEN_RESPONSE = {
 
 _WORKSPACE_USERINFO = {
     "sub": "110000000000000000001",
-    "email": "goran@topoteretes.com",
-    "hd": "topoteretes.com",
+    "email": "goran@Prasad4455.com",
+    "hd": "Prasad4455.com",
 }
 
 _PERSONAL_USERINFO = {"sub": "110000000000000000002", "email": "someone@gmail.com"}
@@ -64,11 +64,11 @@ def make_credential(**overrides):
     credential = SimpleNamespace(
         provider_account_id=_WORKSPACE_USERINFO["sub"],
         user_id="user-1",
-        account_label="goran@topoteretes.com",
+        account_label="goran@Prasad4455.com",
         auth_type="oauth2",
         scopes="openid email drive.readonly",
         token_expires_at=None,
-        provider_metadata={"email": "goran@topoteretes.com"},
+        provider_metadata={"email": "goran@Prasad4455.com"},
         workspace_id=None,
     )
     for key, value in overrides.items():
@@ -117,9 +117,9 @@ def test_parse_installation_keys_on_the_subject_and_marks_a_workspace_account():
     )
 
     assert installation.provider_account_id == _WORKSPACE_USERINFO["sub"]
-    assert installation.account_label == "goran@topoteretes.com"
+    assert installation.account_label == "goran@Prasad4455.com"
     assert installation.provider_metadata["account_type"] == "workspace"
-    assert installation.provider_metadata["hosted_domain"] == "topoteretes.com"
+    assert installation.provider_metadata["hosted_domain"] == "Prasad4455.com"
     assert installation.provider_metadata["selected_folder_ids"] == []
     # Secret material stays out of the cleartext half.
     assert set(installation.token_payload) == {"access_token", "refresh_token"}
@@ -154,7 +154,7 @@ def test_parse_installation_survives_a_missing_refresh_token():
 @pytest.mark.asyncio
 async def test_refresh_updates_only_tokens_and_scopes():
     credential = make_credential(
-        provider_metadata={"email": "goran@topoteretes.com", "account_type": "workspace"},
+        provider_metadata={"email": "goran@Prasad4455.com", "account_type": "workspace"},
         workspace_id="workspace-1",
     )
     with (

@@ -1,4 +1,4 @@
-# Adapted from topoteretes/EphapticOS-community (Apache-2.0), commit 21d0b36.
+# Adapted from Prasad4455/EphapticOS-community (Apache-2.0), commit 21d0b36.
 # Modified to ship in the EphapticOS SDK with SDK-local imports and test paths.
 """End-to-end test: Google Drive connector through the real EphapticOS.add()
 pipeline, with the Drive API mocked (no live credentials).

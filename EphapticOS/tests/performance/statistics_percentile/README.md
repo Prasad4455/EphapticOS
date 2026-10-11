@@ -11,7 +11,7 @@ S3 objects under
 | `<label>.json` | the corpus — a JSON array of `{"title", "content"}` |
 | `mock_<label>.json` | the replay cassette, keyed by the exact chunk text the LLM saw |
 
-The Rust arms read their own copies from `topoteretes/EphapticOS-rs` at
+The Rust arms read their own copies from `Prasad4455/EphapticOS-rs` at
 `scripts/perf/fixtures/<label>/{memories.json,cassette.json}` — a separate repo,
 so adding a corpus there is a separate PR.
 

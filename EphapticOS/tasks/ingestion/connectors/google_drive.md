@@ -1,6 +1,6 @@
 # Google Drive SDK connector
 
-A Google Drive data-source connector for [EphapticOS](https://github.com/topoteretes/EphapticOS):
+A Google Drive data-source connector for [EphapticOS](https://github.com/Prasad4455/EphapticOS):
 sync a Drive folder (Docs, Sheets, PDFs, plain text) into memory — incrementally, with
 forget-on-delete.
 

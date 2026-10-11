@@ -14,7 +14,7 @@ from cognee.shared.logging_utils import get_logger
 
 logger = get_logger("serve.management_api")
 
-DEFAULT_MANAGEMENT_URL = "https://api.dev.cloud.topoteretes.com"
+DEFAULT_MANAGEMENT_URL = "https://api.dev.cloud.Prasad4455.com"
 
 
 def _get_management_url() -> str:

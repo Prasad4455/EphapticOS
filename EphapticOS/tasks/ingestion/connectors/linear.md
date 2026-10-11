@@ -1,6 +1,6 @@
 # Linear SDK connector
 
-A Linear data-source connector for [EphapticOS](https://github.com/topoteretes/EphapticOS):
+A Linear data-source connector for [EphapticOS](https://github.com/Prasad4455/EphapticOS):
 turn a team's issues, comments and projects into memory.
 
 It exposes a `dlt` source you hand straight to `EphapticOS.remember(...)`, so it reuses

@@ -12,7 +12,7 @@ what_youll_build: A cognee deployment where all embeddings live in Qdrant, Ephap
 quickstart: |
   # start Qdrant locally (the example defaults to http://localhost:6333)
   docker run -p 6333:6333 qdrant/qdrant
-  git clone https://github.com/topoteretes/cognee-community.git
+  git clone https://github.com/Prasad4455/cognee-community.git
   cd cognee-community/packages/vector/qdrant
   pip install cognee-community-vector-adapter-qdrant
   export LLM_API_KEY=your_openai_key
@@ -21,6 +21,6 @@ expected_output: |
   Confirmation that embeddings are being written to Qdrant collections, and
   a search response drawn from Qdrant instead of LanceDB.
 difficulty: medium
-repo: topoteretes/cognee-community
+repo: Prasad4455/cognee-community
 path: packages/vector/qdrant
 docs_url: https://docs.cognee.ai/packages/vector/qdrant

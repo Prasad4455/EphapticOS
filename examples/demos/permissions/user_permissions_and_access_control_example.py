@@ -28,7 +28,7 @@ logger = get_logger()
 
 async def main():
     # Set the rest of your environment variables as needed. By default OpenAI is used as the LLM provider
-    # Reference the .env.tempalte file for available option and how to change LLM provider: https://github.com/topoteretes/EphapticOS/blob/main/.env.template
+    # Reference the .env.tempalte file for available option and how to change LLM provider: https://github.com/Prasad4455/EphapticOS/blob/main/.env.template
     # For example to set your OpenAI LLM API key use:
     # Set this before importing EphapticOS so EphapticOS reads the example value instead of defaults or .env settings.
     # os.environ["LLM_API_KEY"] = "your-api-key"

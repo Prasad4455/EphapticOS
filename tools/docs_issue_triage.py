@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Triage GitHub issues on topoteretes/EphapticOS for documentation problems.
+"""Triage GitHub issues on Prasad4455/EphapticOS for documentation problems.
 
 Phase 1 selects open issues by number or by created-at date range and runs the
 cheap docs filter from tools/docs_issue_filter.py. Phase 2 (this version) takes
@@ -13,7 +13,7 @@ issue to the EphapticOS source: a ``git grep`` for the identifiers the issue nam
 second structured LLM call decide whether the product really has the behaviour and the
 docs miss a small fact. An issue a maintainer has already replied on is left to them before any of this
 runs. Confirmed gaps become matrix rows for the workflow's draft-docs
-job (a Claude edit on topoteretes/EphapticOS-docs, then ``--post-gap-comment``); everything
+job (a Claude edit on Prasad4455/EphapticOS-docs, then ``--post-gap-comment``); everything
 uncertain, too big, absent from source, or already being fixed goes to a human-review
 list that is emailed when the SMTP secrets exist. It never labels or closes an issue.
 
@@ -46,7 +46,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from docs_issue_filter import docs_signals, docs_site_urls, label_names, relevant_body_text
 
-DEFAULT_REPO = "topoteretes/EphapticOS"
+DEFAULT_REPO = "Prasad4455/EphapticOS"
 GITHUB_API = "https://api.github.com"
 
 # Full verdict vocabulary. Phase 1 only emits the first four; the rest are reserved
@@ -1413,7 +1413,7 @@ def write_step_summary(
         "",
         (
             "Public actions: one marked comment on `documentation_covered` issues, and for "
-            "`small_gap` issues a draft PR on topoteretes/EphapticOS-docs plus one defensive "
+            "`small_gap` issues a draft PR on Prasad4455/EphapticOS-docs plus one defensive "
             "comment (both from the draft-docs job). All suppressed on dry run. Never closes."
         ),
         "",

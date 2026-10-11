@@ -173,7 +173,7 @@ def test_code_repo_clone_url_detects_repository_roots(spec, clone_url):
         "https://gitlab.com/group/repo/-/merge_requests/1",
         # Forge site pages that happen to have two segments.
         "https://github.com/topics/python",
-        "https://github.com/orgs/topoteretes",
+        "https://github.com/orgs/Prasad4455",
         "https://gitlab.com/explore/projects",
         # Not a repository root.
         "https://github.com/org",

@@ -3,7 +3,7 @@
 Connectors pull data from external sources (Gmail, Slack, Notion, Google Drive,
 Confluence, …) into EphapticOS memory. **Gmail, Google Drive and Linear ship in the SDK**;
 install the Google extras for their client libraries and DLT (Linear needs none). Other connectors
-are distributed under [topoteretes/EphapticOS-community](https://github.com/topoteretes/EphapticOS-community).
+are distributed under [Prasad4455/EphapticOS-community](https://github.com/Prasad4455/EphapticOS-community).
 
 Every connector is built on EphapticOS's **DLT ingestion subsystem**, so they all share
 the same guarantees instead of each reinventing ingestion:

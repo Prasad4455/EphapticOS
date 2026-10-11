@@ -11,7 +11,7 @@ This guide will help you get started and ensure your contributions can be effici
 
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Discord Community](https://discord.gg/bcy8xFAtfd)
-- [Issue Tracker](https://github.com/topoteretes/EphapticOS/issues)
+- [Issue Tracker](https://github.com/Prasad4455/EphapticOS/issues)
 - [EphapticOS Docs](https://docs.EphapticOS.ai)
 
 ## 1. 🚀 Ways to Contribute
@@ -30,7 +30,7 @@ You can contribute to **EphapticOS** in many ways:
 There are several ways to connect with the **EphapticOS** team and community:
 
 ### GitHub Collaboration
-- [Open an issue](https://github.com/topoteretes/EphapticOS/issues) for bug reports, feature requests, or discussions
+- [Open an issue](https://github.com/Prasad4455/EphapticOS/issues) for bug reports, feature requests, or discussions
 - Submit pull requests to contribute code or documentation
 - Join ongoing discussions in existing issues and PRs
 
@@ -58,7 +58,7 @@ To help you find the most appropriate issues to work on, we use the following la
 - `question` - Further information is requested
 - `wontfix` - This will not be worked on
 
-Looking for a place to start? Try filtering for [good first issues](https://github.com/topoteretes/EphapticOS/labels/good%20first%20issue)!
+Looking for a place to start? Try filtering for [good first issues](https://github.com/Prasad4455/EphapticOS/labels/good%20first%20issue)!
 
 
 ## 2. 🛠️ Development Setup
@@ -70,14 +70,14 @@ Looking for a place to start? Try filtering for [good first issues](https://gith
 
 ### Fork and Clone
 
-1. Fork the [**EphapticOS**](https://github.com/topoteretes/EphapticOS) repository
+1. Fork the [**EphapticOS**](https://github.com/Prasad4455/EphapticOS) repository
 2. Clone your fork:
 ```shell
 git clone https://github.com/<your-github-username>/EphapticOS.git
 cd EphapticOS
 ```
 In case you are working on Vector and Graph Adapters
-1. Fork the [**EphapticOS-community**](https://github.com/topoteretes/EphapticOS-community) repository
+1. Fork the [**EphapticOS-community**](https://github.com/Prasad4455/EphapticOS-community) repository
 2. Clone your fork:
 ```shell
 git clone https://github.com/<your-github-username>/EphapticOS-community.git
@@ -147,7 +147,7 @@ uv run python examples/guides/simple_EphapticOS_example.py
    git push origin feature/your-feature-name
    ```
 3. Create a Pull Request:
-   - Go to the [**EphapticOS** repository](https://github.com/topoteretes/EphapticOS) or [EphapticOS community repository](https://github.com/topoteretes/EphapticOS-community)
+   - Go to the [**EphapticOS** repository](https://github.com/Prasad4455/EphapticOS) or [EphapticOS community repository](https://github.com/Prasad4455/EphapticOS-community)
    - Click "Compare & Pull Request" and open a PR against dev branch
    - Fill in the PR template with details about your changes
    - You MUST provide screenshots of unit and integration tests passing on your machine. We can't merge PRs otherwise
@@ -189,7 +189,7 @@ git config alias.cos "commit -s"  # Create alias for signed commits
 ```
 
 When your PR is ready, please include:
-> "I affirm that all code in every commit of this pull request conforms to the terms of the Topoteretes Developer Certificate of Origin"
+> "I affirm that all code in every commit of this pull request conforms to the terms of the Prasad4455 Developer Certificate of Origin"
 
 ## 6. 🤝 Community Guidelines
 
@@ -201,7 +201,7 @@ When your PR is ready, please include:
 
 ## 7. 📫 Getting Help
 
-- Open an [issue](https://github.com/topoteretes/EphapticOS/issues)
+- Open an [issue](https://github.com/Prasad4455/EphapticOS/issues)
 - Join our Discord community
 - Check existing documentation
 

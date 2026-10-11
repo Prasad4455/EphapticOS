@@ -1,6 +1,6 @@
 # Gmail SDK connector
 
-A Gmail data-source connector for [EphapticOS](https://github.com/topoteretes/EphapticOS):
+A Gmail data-source connector for [EphapticOS](https://github.com/Prasad4455/EphapticOS):
 turn your inbox into memory — "ask my inbox".
 
 It exposes a `dlt` source you hand straight to `EphapticOS.remember(...)`, so it reuses

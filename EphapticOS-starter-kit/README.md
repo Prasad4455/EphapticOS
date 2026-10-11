@@ -12,7 +12,7 @@ This starter kit is deprecated. Its examples have been integrated into the `/exa
 ----------
 
 # EphapticOS Starter Kit
-Welcome to the <a href="https://github.com/topoteretes/EphapticOS">EphapticOS</a> Starter Repo! This repository is designed to help you get started quickly by providing a structured dataset and pre-built data pipelines using EphapticOS to build powerful knowledge graphs.
+Welcome to the <a href="https://github.com/Prasad4455/EphapticOS">EphapticOS</a> Starter Repo! This repository is designed to help you get started quickly by providing a structured dataset and pre-built data pipelines using EphapticOS to build powerful knowledge graphs.
 
 You can use this repo to ingest, process, and visualize data in minutes.
 

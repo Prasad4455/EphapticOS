@@ -62,7 +62,7 @@ def test_stamp_uses_checked_out_commit_and_preserves_results(tmp_path, filename,
         **os.environ,
         "JSON_PATH": report.as_posix(),
         "BRANCH": "dev",
-        "REPOSITORY": "topoteretes/EphapticOS",
+        "REPOSITORY": "Prasad4455/EphapticOS",
         "RUN_ID": "123",
         "RUN_ATTEMPT": "2",
         "EVENT": "workflow_dispatch",
@@ -98,7 +98,7 @@ def test_stamp_uses_checked_out_commit_and_preserves_results(tmp_path, filename,
     # same commit time; compare instants rather than serialization choices.
     actual_time = datetime.fromisoformat(result["commit_timestamp"].replace("Z", "+00:00"))
     assert actual_time == datetime.fromisoformat(rust_date if rust else workflow_date)
-    assert result["git_repository"] == ("topoteretes/EphapticOS-rs" if rust else "topoteretes/EphapticOS")
+    assert result["git_repository"] == ("Prasad4455/EphapticOS-rs" if rust else "Prasad4455/EphapticOS")
     if rust:
         assert result["workflow_git_sha"] == workflow_sha
     assert result["branch"] == "dev"
@@ -126,7 +126,7 @@ def test_warehouse_views_expose_provenance_and_preserve_historical_rows():
         provenance = {
             "git_sha": "a" * 40,
             "commit_timestamp": "2026-08-01T12:00:00+02:00",
-            "git_repository": "topoteretes/EphapticOS-rs",
+            "git_repository": "Prasad4455/EphapticOS-rs",
             "workflow_git_sha": "b" * 40,
         }
         for day, extra in enumerate(
@@ -152,7 +152,7 @@ def test_warehouse_views_expose_provenance_and_preserve_historical_rows():
             assert rows[2] == (
                 "a" * 40,
                 datetime.fromisoformat(provenance["commit_timestamp"]),
-                "topoteretes/EphapticOS-rs",
+                "Prasad4455/EphapticOS-rs",
                 "b" * 40,
             )
             assert rows[3] == (None, None, None, None)

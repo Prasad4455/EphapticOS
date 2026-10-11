@@ -146,7 +146,7 @@ def _create_vector_engine(
     Built-in providers include: pgvector, LanceDB, and neptune_analytics. Additional
     providers (e.g. ChromaDB, Qdrant, Weaviate, Milvus) are available as community
     adapters that register themselves via ``use_vector_adapter`` — see
-    https://github.com/topoteretes/cognee-community.
+    https://github.com/Prasad4455/cognee-community.
 
     Parameters:
     -----------

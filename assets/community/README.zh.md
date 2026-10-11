@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/topoteretes/EphapticOS">
-    <img src="https://raw.githubusercontent.com/topoteretes/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
+  <a href="https://github.com/Prasad4455/EphapticOS">
+    <img src="https://raw.githubusercontent.com/Prasad4455/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
   </a>
 
   <br />
@@ -16,13 +16,13 @@
   </p>
 
 
-  [![GitHub forks](https://img.shields.io/github/forks/topoteretes/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/topoteretes/EphapticOS/network/)
-  [![GitHub stars](https://img.shields.io/github/stars/topoteretes/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/topoteretes/EphapticOS/stargazers/)
-  [![GitHub commits](https://badgen.net/github/commits/topoteretes/EphapticOS)](https://GitHub.com/topoteretes/EphapticOS/commit/)
-  [![Github tag](https://badgen.net/github/tag/topoteretes/EphapticOS)](https://github.com/topoteretes/EphapticOS/tags/)
+  [![GitHub forks](https://img.shields.io/github/forks/Prasad4455/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/Prasad4455/EphapticOS/network/)
+  [![GitHub stars](https://img.shields.io/github/stars/Prasad4455/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Prasad4455/EphapticOS/stargazers/)
+  [![GitHub commits](https://badgen.net/github/commits/Prasad4455/EphapticOS)](https://GitHub.com/Prasad4455/EphapticOS/commit/)
+  [![Github tag](https://badgen.net/github/tag/Prasad4455/EphapticOS)](https://github.com/Prasad4455/EphapticOS/tags/)
   [![Downloads](https://static.pepy.tech/badge/EphapticOS)](https://pepy.tech/project/EphapticOS)
-  [![License](https://img.shields.io/github/license/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/blob/main/LICENSE)
-  [![Contributors](https://img.shields.io/github/contributors/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/graphs/contributors)
+  [![License](https://img.shields.io/github/license/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/blob/main/LICENSE)
+  [![Contributors](https://img.shields.io/github/contributors/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/graphs/contributors)
 
   可靠的AI智能体响应。
 
@@ -50,7 +50,7 @@
 
 ## 开始使用
 
-通过Google Colab <a href="https://colab.research.google.com/drive/1g-Qnx6l_ecHZi0IOw23rg0qC4TYvEvWZ?usp=sharing">笔记本</a>或<a href="https://github.com/topoteretes/EphapticOS-starter">入门项目</a>快速上手
+通过Google Colab <a href="https://colab.research.google.com/drive/1g-Qnx6l_ecHZi0IOw23rg0qC4TYvEvWZ?usp=sharing">笔记本</a>或<a href="https://github.com/Prasad4455/EphapticOS-starter">入门项目</a>快速上手
 
 ## 贡献
 您的贡献是使这成为真正开源项目的核心。我们**非常感谢**任何贡献。更多信息请参阅[`CONTRIBUTING.md`](/CONTRIBUTING.md)。
@@ -79,7 +79,7 @@ os.environ["LLM_API_KEY"] = "YOUR OPENAI_API_KEY"
 
 ```
 
-您也可以通过创建.env文件设置变量，使用我们的<a href="https://github.com/topoteretes/EphapticOS/blob/main/.env.template">模板</a>。
+您也可以通过创建.env文件设置变量，使用我们的<a href="https://github.com/Prasad4455/EphapticOS/blob/main/.env.template">模板</a>。
 要使用不同的LLM提供商，请查看我们的<a href="https://docs.EphapticOS.ai">文档</a>获取更多信息。
 
 
@@ -116,8 +116,8 @@ if __name__ == "__main__":
 
 ```
 图形可视化：
-<a href="https://rawcdn.githack.com/topoteretes/EphapticOS/refs/heads/main/assets/graph_visualization.html"><img src="https://rawcdn.githack.com/topoteretes/EphapticOS/refs/heads/main/assets/graph_visualization.png" width="100%" alt="图形可视化"></a>
-在[浏览器](https://rawcdn.githack.com/topoteretes/EphapticOS/refs/heads/main/assets/graph_visualization.html)中打开。
+<a href="https://rawcdn.githack.com/Prasad4455/EphapticOS/refs/heads/main/assets/graph_visualization.html"><img src="https://rawcdn.githack.com/Prasad4455/EphapticOS/refs/heads/main/assets/graph_visualization.png" width="100%" alt="图形可视化"></a>
+在[浏览器](https://rawcdn.githack.com/Prasad4455/EphapticOS/refs/heads/main/assets/graph_visualization.html)中打开。
 
 有关更高级的用法，请查看我们的<a href="https://docs.EphapticOS.ai">文档</a>。
 
@@ -147,15 +147,15 @@ if __name__ == "__main__":
 
 ## 行为准则
 
-我们致力于为我们的社区提供愉快和尊重的开源体验。有关更多信息，请参阅<a href="https://github.com/topoteretes/EphapticOS/blob/main/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT</code></a>。
+我们致力于为我们的社区提供愉快和尊重的开源体验。有关更多信息，请参阅<a href="https://github.com/Prasad4455/EphapticOS/blob/main/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT</code></a>。
 
 ## 💫 贡献者
 
-<a href="https://github.com/topoteretes/EphapticOS/graphs/contributors">
-  <img alt="contributors" src="https://contrib.rocks/image?repo=topoteretes/EphapticOS"/>
+<a href="https://github.com/Prasad4455/EphapticOS/graphs/contributors">
+  <img alt="contributors" src="https://contrib.rocks/image?repo=Prasad4455/EphapticOS"/>
 </a>
 
 
 ## Star历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=topoteretes/EphapticOS&type=Date)](https://star-history.com/#topoteretes/EphapticOS&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Prasad4455/EphapticOS&type=Date)](https://star-history.com/#Prasad4455/EphapticOS&Date)

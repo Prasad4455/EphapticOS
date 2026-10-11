@@ -1,4 +1,4 @@
-# Adapted from topoteretes/EphapticOS-community (Apache-2.0), commit 21d0b36.
+# Adapted from Prasad4455/EphapticOS-community (Apache-2.0), commit 21d0b36.
 # Modified to ship in the EphapticOS SDK with SDK-local imports and test paths.
 """Forget-on-delete must remove a file's cognified graph content, not just its
 Data record. Ingests two Drive files, cognifies (LLM + embeddings mocked, no

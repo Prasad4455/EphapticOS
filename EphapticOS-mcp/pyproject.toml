@@ -31,9 +31,9 @@ dependencies = [
 ]
 
 authors = [
-    { name = "Boris Arzentar", email = "boris@topoteretes.com" },
-    { name = "Igor Ilic", email = "igor@topoteretes.com" },
-    { name = "Laszlo Hajdu", email = "laszlo@topoteretes.com" },
+    { name = "Boris Arzentar", email = "boris@Prasad4455.com" },
+    { name = "Igor Ilic", email = "igor@Prasad4455.com" },
+    { name = "Laszlo Hajdu", email = "laszlo@Prasad4455.com" },
 ]
 
 [build-system]

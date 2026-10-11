@@ -10,7 +10,7 @@ tags:
 summary: Ground extracted entities in a domain ontology (OWL or similar) — matched entities are canonicalized and enriched with its class hierarchy; unmatched ones are kept, or dropped by ONTOLOGY_MODE=strict (graph-only; chunks stay searchable).
 what_youll_build: A Ephaptify run configured with a custom ontology file where matched entity names and types are canonicalized to the ontology's terms and enriched with its class hierarchy, and recall answers use the domain's terminology.
 quickstart: |
-  git clone https://github.com/topoteretes/cognee.git
+  git clone https://github.com/Prasad4455/cognee.git
   cd cognee
   uv pip install cognee
   export LLM_API_KEY=your_openai_key

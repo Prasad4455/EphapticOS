@@ -74,7 +74,7 @@ def _issue(number, title, body="", labels=(), state="open", created="2026-08-22T
         "labels": [{"name": name} for name in labels],
         "state": state,
         "created_at": created,
-        "html_url": f"https://github.com/topoteretes/EphapticOS/issues/{number}",
+        "html_url": f"https://github.com/Prasad4455/EphapticOS/issues/{number}",
     }
 
 
@@ -619,7 +619,7 @@ def test_post_gap_comment_posts_once_never_leaks_urls_and_respects_dry_run(
     body = payload["body"]
     assert body.splitlines()[0] == triage.COMMENT_MARKER
     assert "a documentation change may be prepared" in body
-    assert "github.com/topoteretes/EphapticOS-docs" not in body and "docs.EphapticOS.ai" not in body
+    assert "github.com/Prasad4455/EphapticOS-docs" not in body and "docs.EphapticOS.ai" not in body
 
     existing = [{"body": f"{triage.COMMENT_MARKER}\nold"}]
     calls = _fake_api(

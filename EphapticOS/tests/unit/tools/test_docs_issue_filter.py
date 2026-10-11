@@ -32,7 +32,7 @@ def test_label_title_and_form_are_signals_but_lookalike_words_are_not(f):
 def test_documentation_issue_form_is_detected_without_label(f):
     body = (
         "### Documentation Type\n\nUnclear documentation\n\n"
-        "### Documentation Location\n\nhttps://github.com/topoteretes/EphapticOS\n\n"
+        "### Documentation Location\n\nhttps://github.com/Prasad4455/EphapticOS\n\n"
         "### Issue Description\n\nThe repo isn't very clear where to go to ask questions.\n"
     )
     assert "documentation issue form" in f.docs_signals([], "Request for comment", body)

@@ -448,15 +448,15 @@ curl -s "$EphapticOS_BASE_URL/api/v1/datasets/?session_id=<session-id>" -H "X-Ap
 
 // Claude Code marketplace plugin commands — run in a terminal.
 // The first registers the EphapticOS marketplace, the second installs the memory plugin.
-// See github.com/topoteretes/EphapticOS-integrations/.claude-plugin/marketplace.json
-export const CLAUDE_MARKETPLACE_ADD = "claude plugin marketplace add topoteretes/EphapticOS-integrations";
+// See github.com/Prasad4455/EphapticOS-integrations/.claude-plugin/marketplace.json
+export const CLAUDE_MARKETPLACE_ADD = "claude plugin marketplace add Prasad4455/EphapticOS-integrations";
 export const CLAUDE_PLUGIN_INSTALL = "claude plugin install EphapticOS-memory@EphapticOS";
 
 // Codex marketplace plugin commands — run in a terminal. Codex needs hooks
 // enabled first, then the EphapticOS marketplace is registered and the plugin
-// installed. See github.com/topoteretes/EphapticOS-integrations/tree/main/integrations/codex
+// installed. See github.com/Prasad4455/EphapticOS-integrations/tree/main/integrations/codex
 export const CODEX_HOOKS_ENABLE = "codex features enable hooks";
-export const CODEX_MARKETPLACE_ADD = "codex plugin marketplace add topoteretes/EphapticOS-integrations --ref main";
+export const CODEX_MARKETPLACE_ADD = "codex plugin marketplace add Prasad4455/EphapticOS-integrations --ref main";
 export const CODEX_PLUGIN_INSTALL = "codex plugin add EphapticOS@EphapticOS";
 
 // Onboarding: a ready-to-paste prompt telling the connected agent to push the

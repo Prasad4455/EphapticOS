@@ -31,7 +31,7 @@ tags:
 summary: Answer questions grounded in a set of documents using EphapticOS's graph-completion retrieval instead of plain RAG.
 what_youll_build: A recall pipeline that ingests documents, extracts entities and relationships into a graph, and answers questions with citations back to source chunks.
 quickstart: |
-  git clone https://github.com/topoteretes/EphapticOS.git
+  git clone https://github.com/Prasad4455/EphapticOS.git
   cd EphapticOS
   uv pip install EphapticOS
   export LLM_API_KEY=your_openai_key
@@ -58,8 +58,8 @@ The full schema lives in `catalog/schema.json`. Highlights:
 - **`quickstart`**: A copy-paste block that gets a newcomer running. Include install, env, and a single run command. Multi-line YAML block scalar (`quickstart: |`).
 - **`expected_output`**: A concrete description of what the user should see after running the quickstart. Doesn't need to be exact values, but should be specific enough that a user knows if their run worked.
 - **`difficulty`**: `easy`, `medium`, or `advanced`. Measures the effort for a new user, not code complexity.
-- **`repo`, `path`**: Required for integrations and packages. Point at the source in one of `topoteretes/EphapticOS`, `topoteretes/EphapticOS-community`, or `topoteretes/EphapticOS-integrations`.
-- **`example_path`**: Required for use-cases. Path within `topoteretes/EphapticOS` to a runnable script.
+- **`repo`, `path`**: Required for integrations and packages. Point at the source in one of `Prasad4455/EphapticOS`, `Prasad4455/EphapticOS-community`, or `Prasad4455/EphapticOS-integrations`.
+- **`example_path`**: Required for use-cases. Path within `Prasad4455/EphapticOS` to a runnable script.
 - **`inventory_slug`**: Optional. If your integration already has a slug in `EphapticOS-integrations/integrations/inventory.yml`, set it here so the drift check keeps them aligned.
 - **`docs_url`**: Optional link to a longer doc page (e.g. `docs.EphapticOS.ai/integrations/openai`).
 
@@ -71,7 +71,7 @@ The full schema lives in `catalog/schema.json`. Highlights:
    cp catalog/entries/use-cases/document-qa.yaml catalog/entries/use-cases/your-new-entry.yaml
    ```
 3. Edit every field. The schema catches typos in field names, so a stray letter turns into a CI error, not a silent bug.
-4. Make sure the `example_path` (for use-cases) or the `path` (for integrations/packages pointing at `topoteretes/EphapticOS`) resolves against the current checkout.
+4. Make sure the `example_path` (for use-cases) or the `path` (for integrations/packages pointing at `Prasad4455/EphapticOS`) resolves against the current checkout.
 5. If you're referencing an example that doesn't have a mocked test yet, coordinate with #3601 so the example runs in CI.
 6. Run the validation locally (a standard `uv sync` already provides the `pyyaml` and `jsonschema` the tooling needs):
    ```bash

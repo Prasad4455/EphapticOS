@@ -21,7 +21,7 @@ export const AUTOMATION_CARDS: SetupConnectorCfg[] = [
     description: "Add EphapticOS tools to your Dify agents and workflows.",
     icon: imgIcon("/visuals/logos/dify.svg", "Dify"),
     buildSteps: (baseUrl, apiKey, loading) => [
-      { title: "Install the EphapticOS plugin", description: "In your Dify workspace, open the Marketplace, search for \"EphapticOS\" (by topoteretes), and click Install.", code: "marketplace.dify.ai/plugin/topoteretes/EphapticOS", codeToCopy: "https://marketplace.dify.ai/plugin/topoteretes/EphapticOS" },
+      { title: "Install the EphapticOS plugin", description: "In your Dify workspace, open the Marketplace, search for \"EphapticOS\" (by Prasad4455), and click Install.", code: "marketplace.dify.ai/plugin/Prasad4455/EphapticOS", codeToCopy: "https://marketplace.dify.ai/plugin/Prasad4455/EphapticOS" },
       // The Dify plugin needs the /api suffix — without it, validation passes (root /health) but every tool call 404s.
       { title: "Configure the plugin", description: "Open the plugin's authorization settings and enter your EphapticOS Base URL (including the /api suffix) and API key.", code: `${baseUrl}/api`, codeToCopy: `${baseUrl}/api\n${apiKey}`, loading },
       { title: "Add EphapticOS tools to your app", description: "In an Agent or Workflow app, add the EphapticOS tools — create a dataset, ingest text or files, run Ephaptify, then search your memory." },

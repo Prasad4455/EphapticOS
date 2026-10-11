@@ -1,7 +1,7 @@
 name: Nightly Tests
 # Least-privilege token (OSSF Scorecard: Token-Permissions). packages: read is
 # needed by the called performance_report.yml jobs, whose postgres service
-# container pulls ghcr.io/topoteretes/pgvector:pg17 with the GITHUB_TOKEN.
+# container pulls ghcr.io/Prasad4455/pgvector:pg17 with the GITHUB_TOKEN.
 # Nothing in this workflow publishes packages, so no write scope.
 permissions:
   contents: read
@@ -79,7 +79,7 @@ jobs:
   # the 50-doc set is short synthetic ones. This is many medium-sized real-world
   # documents, which is the shape most user datasets actually have.
   #
-  # No Rust arms yet: those read fixtures from topoteretes/cognee-rs
+  # No Rust arms yet: those read fixtures from Prasad4455/cognee-rs
   # (scripts/perf/fixtures/<label>/), so they land with that repo's PR.
   perf-datasheets-llm:
     name: Performance — Datasheets (real LLM)

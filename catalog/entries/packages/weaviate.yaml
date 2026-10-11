@@ -12,7 +12,7 @@ what_youll_build: A cognee deployment where Ephaptify writes chunks and embeddin
 quickstart: |
   # start Weaviate locally
   docker run -p 8080:8080 -p 50051:50051 cr.weaviate.io/semitechnologies/weaviate:1.32.4
-  git clone https://github.com/topoteretes/cognee-community.git
+  git clone https://github.com/Prasad4455/cognee-community.git
   cd cognee-community/packages/vector/weaviate
   pip install cognee-community-vector-adapter-weaviate
   export LLM_API_KEY=your_openai_key
@@ -22,6 +22,6 @@ expected_output: |
   Weaviate classes populated by Ephaptify, plus a recall response that matches
   the cognee search contract while running against Weaviate under the hood.
 difficulty: medium
-repo: topoteretes/cognee-community
+repo: Prasad4455/cognee-community
 path: packages/vector/weaviate
 docs_url: https://docs.cognee.ai/packages/vector/weaviate

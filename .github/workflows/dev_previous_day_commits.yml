@@ -174,7 +174,7 @@ jobs:
         if: ${{ steps.assessment.outputs.needs_update == 'true' }}
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
-          repository: topoteretes/cognee-docs
+          repository: Prasad4455/cognee-docs
           token: ${{ secrets.REPO_DISPATCH_PAT_TOKEN }}
           ref: main
           path: docs-repo
@@ -441,7 +441,7 @@ jobs:
           CHANGES_MADE: ${{ steps.commit_docs.outputs.changes_made }}
         run: |
           python3 -I tools/manage_docs_pr.py \
-            --target-repo topoteretes/cognee-docs \
+            --target-repo Prasad4455/cognee-docs \
             --head-branch "${HEAD_BRANCH}" \
             --pr-title "${PR_TITLE}" \
             --pr-body "${PR_BODY}" \

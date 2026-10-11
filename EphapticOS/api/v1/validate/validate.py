@@ -3,7 +3,7 @@
 ``Ephaptify()`` writes each node's id as a primary key in up to three stores at
 once (graph, vector, relational — see
 ``modules/migrations/versions/namespace_entity_type_node_ids.py``, which exists
-because those three drifted apart once already: topoteretes/cognee#2515). An
+because those three drifted apart once already: Prasad4455/cognee#2515). An
 edge is only meaningful while both endpoints it names still exist. Nothing
 today re-checks either invariant after the fact; this module is the read-only
 check for it.

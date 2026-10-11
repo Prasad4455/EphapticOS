@@ -163,7 +163,7 @@ async def _serve_cloud(
     from cognee.api.v1.serve.state import set_remote_client
 
     mgmt_url = management_url or os.getenv(
-        "COGNEE_CLOUD_URL", "https://api.dev.cloud.topoteretes.com"
+        "COGNEE_CLOUD_URL", "https://api.dev.cloud.Prasad4455.com"
     )
     mgmt_url = mgmt_url.rstrip("/")
 

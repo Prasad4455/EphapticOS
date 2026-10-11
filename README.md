@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/topoteretes/EphapticOS">
+  <a href="https://github.com/Prasad4455/EphapticOS">
     <img src="assets/EphapticOS-logo.svg" alt="EphapticOS Logo" width="260">
   </a>
 
@@ -18,24 +18,24 @@
   ·
   <a href="https://www.reddit.com/r/AIMemory/">Join r/AIMemory</a>
   .
-  <a href="https://github.com/topoteretes/EphapticOS-community">Community Plugins & Add-ons</a>
+  <a href="https://github.com/Prasad4455/EphapticOS-community">Community Plugins & Add-ons</a>
   </p>
 
 
   <p>
-  <a href="https://GitHub.com/topoteretes/EphapticOS/network/"><img src="https://img.shields.io/github/forks/topoteretes/EphapticOS.svg?style=social&amp;label=Fork&amp;maxAge=2592000" alt="GitHub forks"></a>
-  <a href="https://github.com/topoteretes/EphapticOS"><img src="https://img.shields.io/github/stars/topoteretes/EphapticOS.svg?style=social&amp;label=Star&amp;maxAge=2592000" alt="GitHub stars"></a>
-  <a href="https://GitHub.com/topoteretes/EphapticOS/commit/"><img src="https://badgen.net/github/commits/topoteretes/EphapticOS" alt="GitHub commits"></a>
-  <a href="https://github.com/topoteretes/EphapticOS/tags/"><img src="https://badgen.net/github/tag/topoteretes/EphapticOS" alt="GitHub tag"></a>
+  <a href="https://GitHub.com/Prasad4455/EphapticOS/network/"><img src="https://img.shields.io/github/forks/Prasad4455/EphapticOS.svg?style=social&amp;label=Fork&amp;maxAge=2592000" alt="GitHub forks"></a>
+  <a href="https://github.com/Prasad4455/EphapticOS"><img src="https://img.shields.io/github/stars/Prasad4455/EphapticOS.svg?style=social&amp;label=Star&amp;maxAge=2592000" alt="GitHub stars"></a>
+  <a href="https://GitHub.com/Prasad4455/EphapticOS/commit/"><img src="https://badgen.net/github/commits/Prasad4455/EphapticOS" alt="GitHub commits"></a>
+  <a href="https://github.com/Prasad4455/EphapticOS/tags/"><img src="https://badgen.net/github/tag/Prasad4455/EphapticOS" alt="GitHub tag"></a>
   <a href="https://pepy.tech/project/EphapticOS"><img src="https://static.pepy.tech/badge/EphapticOS" alt="Downloads"></a>
-  <a href="https://github.com/topoteretes/EphapticOS/blob/main/LICENSE"><img src="https://img.shields.io/github/license/topoteretes/EphapticOS?colorA=00C586&amp;colorB=000000" alt="License"></a>
-  <a href="https://github.com/topoteretes/EphapticOS/graphs/contributors"><img src="https://img.shields.io/github/contributors/topoteretes/EphapticOS?colorA=00C586&amp;colorB=000000" alt="Contributors"></a>
-  <a href="https://github.com/sponsors/topoteretes"><img src="https://img.shields.io/badge/Sponsor-❤️-ff69b4.svg" alt="Sponsor"></a>
+  <a href="https://github.com/Prasad4455/EphapticOS/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Prasad4455/EphapticOS?colorA=00C586&amp;colorB=000000" alt="License"></a>
+  <a href="https://github.com/Prasad4455/EphapticOS/graphs/contributors"><img src="https://img.shields.io/github/contributors/Prasad4455/EphapticOS?colorA=00C586&amp;colorB=000000" alt="Contributors"></a>
+  <a href="https://github.com/sponsors/Prasad4455"><img src="https://img.shields.io/badge/Sponsor-❤️-ff69b4.svg" alt="Sponsor"></a>
   </p>
 
 <p>
   <a href="https://trendshift.io/repositories/13955" target="_blank" style="display:inline-block;">
-    <img src="https://trendshift.io/api/badge/repositories/13955" alt="topoteretes%2FEphapticOS | Trendshift" width="250" height="55" />
+    <img src="https://trendshift.io/api/badge/repositories/13955" alt="Prasad4455%2FEphapticOS | Trendshift" width="250" height="55" />
   </a>
 </p>
 
@@ -47,14 +47,14 @@
   <p align="center">
   🌐 This README is also available in:<br />
   <!-- Keep these links. Translations will automatically update with the README. -->
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=de">Deutsch</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=es">Español</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=fr">Français</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=ja">日本語</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=de">Deutsch</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=es">Español</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=fr">Français</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=ja">日本語</a> |
   <a href="README_ko.md">한국어</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=pt">Português</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=ru">Русский</a> |
-  <a href="https://www.readme-i18n.com/topoteretes/EphapticOS?lang=zh">中文</a>
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=pt">Português</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=ru">Русский</a> |
+  <a href="https://www.readme-i18n.com/Prasad4455/EphapticOS?lang=zh">中文</a>
   </p>
 
 <p align="center">
@@ -145,7 +145,7 @@ import os
 
 os.environ["LLM_API_KEY"] = "YOUR OPENAI_API_KEY"
 ```
-Alternatively, create a `.env` file using our [template](https://github.com/topoteretes/EphapticOS/blob/main/.env.template).
+Alternatively, create a `.env` file using our [template](https://github.com/Prasad4455/EphapticOS/blob/main/.env.template).
 
 Once a key is set, EphapticOS uses OpenAI for language models and embeddings, and processing and generated answers make provider calls. See [installation](https://docs.EphapticOS.ai/getting-started/installation), [other providers](https://docs.EphapticOS.ai/setup-configuration/llm-providers), or [local Ollama models](https://docs.EphapticOS.ai/guides/local-ollama) for other setups.
 
@@ -191,7 +191,7 @@ Explore the [architecture](https://docs.EphapticOS.ai/core-concepts/architecture
 Install the Claude Code plugin:
 
 ```bash
-claude plugin marketplace add topoteretes/EphapticOS-integrations
+claude plugin marketplace add Prasad4455/EphapticOS-integrations
 claude plugin install EphapticOS-memory@EphapticOS
 ```
 
@@ -211,23 +211,23 @@ hooks = true
 Then add the marketplace and the plugin:
 
 ```bash
-codex plugin marketplace add topoteretes/EphapticOS-integrations --ref main
+codex plugin marketplace add Prasad4455/EphapticOS-integrations --ref main
 codex plugin add EphapticOS@EphapticOS
 ```
 
-Follow the [plugin setup guide](https://github.com/topoteretes/EphapticOS-integrations/tree/main/integrations/claude-code) to configure local or remote memory.
+Follow the [plugin setup guide](https://github.com/Prasad4455/EphapticOS-integrations/tree/main/integrations/claude-code) to configure local or remote memory.
 
 | Interface | Start here |
 | --- | --- |
-| Claude Code memory plugin | [Install and configure the plugin](https://github.com/topoteretes/EphapticOS-integrations/tree/main/integrations/claude-code) |
+| Claude Code memory plugin | [Install and configure the plugin](https://github.com/Prasad4455/EphapticOS-integrations/tree/main/integrations/claude-code) |
 | OpenClaw memory plugin | [Install `@EphapticOS/EphapticOS-openclaw`](https://www.npmjs.com/package/@EphapticOS/EphapticOS-openclaw) |
 | Cursor, Cline, and other MCP clients | [EphapticOS MCP guide](https://docs.EphapticOS.ai/EphapticOS-mcp/mcp-overview) and [server README](EphapticOS-mcp/README.md) |
 | Python applications | [Python API reference](https://docs.EphapticOS.ai/python-api) |
 | TypeScript applications | [TypeScript SDK](https://docs.EphapticOS.ai/typescript/getting-started) |
-| Rust applications | [EphapticOS-RS](https://github.com/topoteretes/EphapticOS-rs) |
+| Rust applications | [EphapticOS-RS](https://github.com/Prasad4455/EphapticOS-rs) |
 | Applications using HTTP | [REST API reference](https://docs.EphapticOS.ai/api-reference/introduction) |
 
-Browse the [integrations repository](https://github.com/topoteretes/EphapticOS-integrations) for agent frameworks, plugins, and source connectors. Each guide describes its setup and memory capture behavior.
+Browse the [integrations repository](https://github.com/Prasad4455/EphapticOS-integrations) for agent frameworks, plugins, and source connectors. Each guide describes its setup and memory capture behavior.
 
 To inspect a local installation in the UI:
 
@@ -246,7 +246,7 @@ The UI launcher requires Node.js/npm; Docker is needed for its MCP service. See 
 - [Visualize your knowledge graph](https://docs.EphapticOS.ai/guides/graph-visualization) and inspect its connections.
 - [Browse runnable examples](examples/README.md) for ingestion, sessions, feedback, and custom pipelines.
 - [Run the prebuilt API with Docker Compose](docs/minimal-docker-compose.md) or use the [deployment templates](distributed/deploy/README.md).
-- [Explore community adapters and add-ons](https://github.com/topoteretes/EphapticOS-community).
+- [Explore community adapters and add-ons](https://github.com/Prasad4455/EphapticOS-community).
 
 <a id="run-with-docker"></a>
 
@@ -299,9 +299,9 @@ For the research behind EphapticOS's graph/LLM interface, see [Optimizing the In
 
 [![Watch Demo](https://img.youtube.com/vi/8hmqS2Y5RVQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=8hmqS2Y5RVQ&t=13s)
 
-- **[v1.6.1 — Google Sync & Visualization](https://github.com/topoteretes/EphapticOS/releases/tag/v1.6.1)** (September 24, 2026): Google Drive and Gmail OAuth connectors bundled in the SDK, `/visualize/json` streamed in chunks for large graphs, and the GLiNER installer moved off the event loop with CPU torch installed on first use.
+- **[v1.6.1 — Google Sync & Visualization](https://github.com/Prasad4455/EphapticOS/releases/tag/v1.6.1)** (September 24, 2026): Google Drive and Gmail OAuth connectors bundled in the SDK, `/visualize/json` streamed in chunks for large graphs, and the GLiNER installer moved off the event loop with CPU torch installed on first use.
 - Document `external_metadata` is stamped on every chunk and surfaced in hybrid retrieval. **Breaking:** `dlt` is now a core dependency — make sure it is installed if you manage dependencies by hand.
-- **[v1.6.0 — Keyless workflows & pipeline reliability](https://github.com/topoteretes/EphapticOS/releases/tag/v1.6.0)** (September 18, 2026): build and search text memory with local models and no cloud LLM key; LLM-dependent improvement stages skip when no LLM is configured, and pipeline recovery preserves completed documents after crashes.
+- **[v1.6.0 — Keyless workflows & pipeline reliability](https://github.com/Prasad4455/EphapticOS/releases/tag/v1.6.0)** (September 18, 2026): build and search text memory with local models and no cloud LLM key; LLM-dependent improvement stages skip when no LLM is configured, and pipeline recovery preserves completed documents after crashes.
 
 
 ## Community & Support
@@ -311,7 +311,7 @@ We welcome contributions from the community! Your input helps make EphapticOS be
 
 ### Code of Conduct
 
-We're committed to fostering an inclusive and respectful community. Read our [Code of Conduct](https://github.com/topoteretes/EphapticOS/blob/main/CODE_OF_CONDUCT.md) for guidelines.
+We're committed to fostering an inclusive and respectful community. Read our [Code of Conduct](https://github.com/Prasad4455/EphapticOS/blob/main/CODE_OF_CONDUCT.md) for guidelines.
 
 ## Research & Citation
 

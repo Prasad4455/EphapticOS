@@ -123,7 +123,7 @@ jobs:
       - name: Check out docs repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
-          repository: topoteretes/cognee-docs
+          repository: Prasad4455/cognee-docs
           token: ${{ secrets.REPO_DISPATCH_PAT_TOKEN }}
           ref: main
           path: docs-repo
@@ -179,7 +179,7 @@ jobs:
           RELEASE_MODE: ${{ steps.release_meta.outputs.release_mode }}
           RELEASE_TAG: ${{ steps.release_meta.outputs.tag }}
           RELEASE_URL: ${{ steps.release_meta.outputs.release_url }}
-          TARGET_REPO: topoteretes/cognee-docs
+          TARGET_REPO: Prasad4455/cognee-docs
           HEAD_BRANCH: ${{ steps.commit_docs.outputs.branch_name }}
         run: |
           if [ "${RELEASE_MODE}" = "true" ]; then
@@ -200,7 +200,7 @@ jobs:
             )
           fi
 
-          HEAD_REF="topoteretes:${HEAD_BRANCH}"
+          HEAD_REF="Prasad4455:${HEAD_BRANCH}"
 
           EXISTING_PR_NUMBER="$(gh pr list \
             --repo "${TARGET_REPO}" \

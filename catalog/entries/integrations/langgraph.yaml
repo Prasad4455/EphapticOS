@@ -20,7 +20,7 @@ expected_output: |
   An agent run where the model calls the cognee add tool to store context and
   the search tool to retrieve relevant prior context for its next step.
 difficulty: medium
-repo: topoteretes/cognee-integrations
+repo: Prasad4455/cognee-integrations
 path: integrations/langgraph
 inventory_slug: langgraph
 docs_url: https://docs.cognee.ai/integrations/langgraph

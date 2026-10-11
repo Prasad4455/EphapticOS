@@ -1,6 +1,6 @@
 """Cross-repo drift check between the catalog and cognee-integrations/inventory.yml.
 
-Fetches ``inventory.yml`` from ``topoteretes/cognee-integrations`` via the
+Fetches ``inventory.yml`` from ``Prasad4455/cognee-integrations`` via the
 GitHub REST API and cross-checks the ``slug`` values against every
 ``inventory_slug`` field in the local catalog.
 
@@ -31,7 +31,7 @@ import yaml
 
 from catalog.loader import CatalogError, load_catalog
 
-INVENTORY_REPO = "topoteretes/cognee-integrations"
+INVENTORY_REPO = "Prasad4455/cognee-integrations"
 INVENTORY_PATH = "integrations/inventory.yml"
 GITHUB_API = "https://api.github.com"
 USER_AGENT = "cognee-catalog-drift-check"

@@ -6,9 +6,9 @@ Reads every YAML file under ``catalog/entries/`` and returns a validated list of
 1. Structural: entry conforms to ``catalog/schema.json``.
 2. Naming: ``id`` matches the filename stem, and the entry lives under the
    subdirectory that matches its ``kind``.
-3. Resolution: for entries pointing at ``topoteretes/cognee`` sources, the
+3. Resolution: for entries pointing at ``Prasad4455/cognee`` sources, the
    referenced files must exist in the current checkout. Cross-repo references
-   (``topoteretes/cognee-community``, ``topoteretes/cognee-integrations``) are
+   (``Prasad4455/cognee-community``, ``Prasad4455/cognee-integrations``) are
    syntax-checked only; live resolution is deferred to ``inventory_sync.py``
    which fetches them via the GitHub API.
 
@@ -38,8 +38,8 @@ KIND_TO_SUBDIR = {
     "package": "packages",
 }
 
-LOCAL_REPO = "topoteretes/cognee"
-EXTERNAL_REPOS = {"topoteretes/cognee-community", "topoteretes/cognee-integrations"}
+LOCAL_REPO = "Prasad4455/cognee"
+EXTERNAL_REPOS = {"Prasad4455/cognee-community", "Prasad4455/cognee-integrations"}
 
 
 class CatalogError(Exception):

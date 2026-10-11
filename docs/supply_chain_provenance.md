@@ -39,7 +39,7 @@ per workflow: two on `EphapticOS` and one on the separate `EphapticOS-mcp` proje
    | Field | Release publisher | Canary publisher | MCP release publisher |
    | --- | --- | --- | --- |
    | PyPI project | `EphapticOS` | `EphapticOS` | `EphapticOS-mcp` |
-   | Owner | `topoteretes` | `topoteretes` | `topoteretes` |
+   | Owner | `Prasad4455` | `Prasad4455` | `Prasad4455` |
    | Repository | `EphapticOS` | `EphapticOS` | `EphapticOS` |
    | Workflow name | `release.yml` | `dev_canary_release.yml` | `release_mcp.yml` |
    | Environment | *(leave blank)* | *(leave blank)* | *(leave blank)* |
@@ -114,11 +114,11 @@ Download a wheel/sdist and verify the GitHub-hosted build provenance with the
 GitHub CLI:
 
 ```bash
-gh attestation verify ./EphapticOS-<version>-py3-none-any.whl --repo topoteretes/EphapticOS
+gh attestation verify ./EphapticOS-<version>-py3-none-any.whl --repo Prasad4455/EphapticOS
 ```
 
 A successful verification confirms the artifact's SHA-256 digest was produced by
-a workflow in `topoteretes/EphapticOS`.
+a workflow in `Prasad4455/EphapticOS`.
 
 ### Docker image (in-toto provenance + SBOM)
 

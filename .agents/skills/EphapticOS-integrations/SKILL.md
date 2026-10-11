@@ -36,7 +36,7 @@ either keep a valid OpenAI key or configure both.
   (`cognee[postgres]`, needs `VECTOR_DB_URL`), neptune_analytics
   (`cognee[neptune]`), turso (`cognee[turso]`). Anything else (ChromaDB,
   Qdrant, Weaviate, Milvus, …) lives in community adapters — install from
-  https://github.com/topoteretes/cognee-community and register with
+  https://github.com/Prasad4455/cognee-community and register with
   `use_vector_adapter` before use; setting `VECTOR_DB_PROVIDER` alone raises
   "Unsupported vector database provider".
 - **Graph** (`GRAPH_DATABASE_PROVIDER`): ladybug (default), neo4j

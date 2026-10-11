@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/topoteretes/EphapticOS">
-    <img src="https://raw.githubusercontent.com/topoteretes/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
+  <a href="https://github.com/Prasad4455/EphapticOS">
+    <img src="https://raw.githubusercontent.com/Prasad4455/EphapticOS/refs/heads/dev/assets/EphapticOS-logo-transparent.png" alt="EphapticOS Logo" height="60">
   </a>
 
   <br />
@@ -18,17 +18,17 @@
   </p>
 
 
-  [![GitHub forks](https://img.shields.io/github/forks/topoteretes/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/topoteretes/EphapticOS/network/)
-  [![GitHub stars](https://img.shields.io/github/stars/topoteretes/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/topoteretes/EphapticOS/stargazers/)
-  [![GitHub commits](https://badgen.net/github/commits/topoteretes/EphapticOS)](https://GitHub.com/topoteretes/EphapticOS/commit/)
-  [![Github tag](https://badgen.net/github/tag/topoteretes/EphapticOS)](https://github.com/topoteretes/EphapticOS/tags/)
+  [![GitHub forks](https://img.shields.io/github/forks/Prasad4455/EphapticOS.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/Prasad4455/EphapticOS/network/)
+  [![GitHub stars](https://img.shields.io/github/stars/Prasad4455/EphapticOS.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Prasad4455/EphapticOS/stargazers/)
+  [![GitHub commits](https://badgen.net/github/commits/Prasad4455/EphapticOS)](https://GitHub.com/Prasad4455/EphapticOS/commit/)
+  [![Github tag](https://badgen.net/github/tag/Prasad4455/EphapticOS)](https://github.com/Prasad4455/EphapticOS/tags/)
   [![Downloads](https://static.pepy.tech/badge/EphapticOS)](https://pepy.tech/project/EphapticOS)
-  [![License](https://img.shields.io/github/license/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/blob/main/LICENSE)
-  [![Contributors](https://img.shields.io/github/contributors/topoteretes/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/topoteretes/EphapticOS/graphs/contributors)
+  [![License](https://img.shields.io/github/license/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/blob/main/LICENSE)
+  [![Contributors](https://img.shields.io/github/contributors/Prasad4455/EphapticOS?colorA=00C586&colorB=000000)](https://github.com/Prasad4455/EphapticOS/graphs/contributors)
 
 <a href="https://www.producthunt.com/posts/EphapticOS?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-EphapticOS" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=946346&theme=light&period=daily&t=1744472480704" alt="EphapticOS - Memory&#0032;for&#0032;AI&#0032;Agents&#0032;&#0032;in&#0032;5&#0032;lines&#0032;of&#0032;code | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
-<a href="https://trendshift.io/repositories/13955" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13955" alt="topoteretes%2FEphapticOS | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+<a href="https://trendshift.io/repositories/13955" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13955" alt="Prasad4455%2FEphapticOS | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
 
 Build memory for Agents and query from any client that speaks MCP – in your terminal or IDE.
@@ -67,7 +67,7 @@ Supported operations are `query_facts`, `explore`, `traverse`, `find_path`, `imp
 
 1. Clone EphapticOS repo
     ```
-    git clone https://github.com/topoteretes/EphapticOS.git
+    git clone https://github.com/Prasad4455/EphapticOS.git
     ```
 2. Navigate to EphapticOS-mcp subdirectory
     ```
@@ -102,7 +102,7 @@ Supported operations are `query_facts`, `explore`, `traverse`, `find_path`, `imp
     python src/server.py --transport http --host 127.0.0.1 --port 8000 --path /mcp
     ```
 
-You can do more advanced configurations by creating .env file using our <a href="https://github.com/topoteretes/EphapticOS/blob/main/.env.template">template.</a>
+You can do more advanced configurations by creating .env file using our <a href="https://github.com/Prasad4455/EphapticOS/blob/main/.env.template">template.</a>
 To use different LLM providers / database configurations, and for more info check out our <a href="https://docs.EphapticOS.ai">documentation</a>.
 
 > **No API key?** If your MCP host grants the `sampling` capability, `LLM_PROVIDER="mcp-sampling"`
@@ -170,7 +170,7 @@ If you'd rather run EphapticOS-mcp in a container, you have two options:
       - `docs` - Document processing
       - `tracing` - OpenTelemetry tracing
       - `redis` - Redis support
-      - And more (see [pyproject.toml](https://github.com/topoteretes/EphapticOS/blob/main/pyproject.toml) for full list)
+      - And more (see [pyproject.toml](https://github.com/Prasad4455/EphapticOS/blob/main/pyproject.toml) for full list)
 2. **Pull from Docker Hub** (no build required):
 
    The image is published to Docker Hub on every push to `main`. If you have **not** cloned the
@@ -751,15 +751,15 @@ In order to use local EphapticOS:
 
 ## Code of Conduct
 
-We are committed to making open source an enjoyable and respectful experience for our community. See <a href="https://github.com/topoteretes/EphapticOS/blob/main/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT</code></a> for more information.
+We are committed to making open source an enjoyable and respectful experience for our community. See <a href="https://github.com/Prasad4455/EphapticOS/blob/main/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT</code></a> for more information.
 
 ## 💫 Contributors
 
-<a href="https://github.com/topoteretes/EphapticOS/graphs/contributors">
-  <img alt="contributors" src="https://contrib.rocks/image?repo=topoteretes/EphapticOS"/>
+<a href="https://github.com/Prasad4455/EphapticOS/graphs/contributors">
+  <img alt="contributors" src="https://contrib.rocks/image?repo=Prasad4455/EphapticOS"/>
 </a>
 
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=topoteretes/EphapticOS&type=Date)](https://star-history.com/#topoteretes/EphapticOS&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Prasad4455/EphapticOS&type=Date)](https://star-history.com/#Prasad4455/EphapticOS&Date)

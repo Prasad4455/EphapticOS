@@ -100,7 +100,7 @@ jobs:
       - name: Install the cognee memory plugin
         # Adjust the marketplace/plugin name if it differs in your setup.
         run: |
-          claude plugin marketplace add topoteretes/cognee-integrations
+          claude plugin marketplace add Prasad4455/cognee-integrations
           claude plugin install cognee-memory@cognee-integrations
       - name: Index this repository into cognee's code graph
         env:

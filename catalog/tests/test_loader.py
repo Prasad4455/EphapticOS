@@ -28,7 +28,7 @@ VALID_INTEGRATION = {
     "quickstart": "pip install example\npython run.py",
     "expected_output": "Some expected output text.",
     "difficulty": "easy",
-    "repo": "topoteretes/cognee-community",
+    "repo": "Prasad4455/cognee-community",
     "path": "packages/example",
 }
 

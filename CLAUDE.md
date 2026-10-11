@@ -367,7 +367,7 @@ DB_NAME=EphapticOS_db
 #### Vector Databases
 Supported in-tree: lancedb (default), pgvector, neptune_analytics, turso.
 Others (ChromaDB, Qdrant, Weaviate, Milvus, …) are community adapters — install from
-https://github.com/topoteretes/EphapticOS-community and register via `use_vector_adapter`
+https://github.com/Prasad4455/EphapticOS-community and register via `use_vector_adapter`
 before setting `VECTOR_DB_PROVIDER`, otherwise EphapticOS raises
 "Unsupported vector database provider".
 ```bash
@@ -977,6 +977,6 @@ shutdown = visualization_server(port=8080)  # synchronous; returns a shutdown ca
 
 - [Documentation](https://docs.EphapticOS.ai/)
 - [Discord Community](https://discord.gg/NQPKmU5CCg)
-- [GitHub Issues](https://github.com/topoteretes/EphapticOS/issues)
+- [GitHub Issues](https://github.com/Prasad4455/EphapticOS/issues)
 - [Example Notebooks](examples/)
 - [Research Paper](https://arxiv.org/abs/2505.24478) - Optimizing knowledge graphs for LLM reasoning

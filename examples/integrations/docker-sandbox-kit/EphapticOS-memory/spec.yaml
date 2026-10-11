@@ -12,7 +12,7 @@ name: EphapticOS-memory
 version: 0.1.0
 displayName: EphapticOS Memory
 description: Persistent AI memory for sandboxed agents — knowledge graph + vector search via EphapticOS
-sourceURL: https://github.com/topoteretes/EphapticOS
+sourceURL: https://github.com/Prasad4455/EphapticOS
 licenses:
   - Apache-2.0
 

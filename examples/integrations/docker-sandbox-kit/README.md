@@ -2,7 +2,7 @@
 
 A [Docker Sandboxes kit](https://docs.docker.com/ai/sandboxes/customize/kits/)
 that gives any sandboxed coding agent persistent, self-improving memory backed
-by [EphapticOS](https://github.com/topoteretes/EphapticOS) memory layer. Everything runs embedded inside the sandbox
+by [EphapticOS](https://github.com/Prasad4455/EphapticOS) memory layer. Everything runs embedded inside the sandbox
 
 Verified end-to-end with sbx v0.39.0 under a `deny-all` network policy.
 

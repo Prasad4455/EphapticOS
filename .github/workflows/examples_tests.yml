@@ -219,7 +219,7 @@ jobs:
         shell: bash
     services:
       postgres: # Using postgres to avoid storing and using SQLite from S3
-        image: ghcr.io/topoteretes/pgvector:pg17
+        image: ghcr.io/Prasad4455/pgvector:pg17
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}

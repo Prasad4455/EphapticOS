@@ -258,7 +258,7 @@ rapidocr = ["rapidocr-onnxruntime>=1.3.0,<2"]
 
 [project.urls]
 Homepage = "https://www.EphapticOS.ai"
-Repository = "https://github.com/topoteretes/EphapticOS"
+Repository = "https://github.com/Prasad4455/EphapticOS"
 
 [project.scripts]
 EphapticOS-cli = "EphapticOS.cli._EphapticOS:main"
