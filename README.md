@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/Prasad4455/EphapticOS">
-    <img src="assets/EphapticOS-logo.svg" alt="EphapticOS Logo" width="260">
+    <img src="" alt="EphapticOS Logo" width="260">
   </a>
 
   <br />
