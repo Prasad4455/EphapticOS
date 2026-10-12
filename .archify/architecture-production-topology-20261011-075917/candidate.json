@@ -1,0 +1,523 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "EphapticOS Production Deployment Topology",
+    "output": ".archify/architecture-production-topology-20261011-075917/production-topology.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Prasad4455/EphapticOS.git",
+      "provider": "github",
+      "revision": "65a2f532a46eafa8cad923ee198f5add05c6b214"
+    }
+  },
+  "components": [
+    {
+      "id": "clients",
+      "type": "external",
+      "label": "External Clients",
+      "sublabel": "Browser / IDE Extensions",
+      "tag": "customers",
+      "pos": [
+        40,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ]
+    },
+    {
+      "id": "ingress_lb",
+      "type": "security",
+      "label": "Ingress Controller",
+      "sublabel": "TLS 1.3 / Port :443",
+      "tag": "platform",
+      "pos": [
+        300,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "deployment/helm/values.yaml",
+          "line": 11,
+          "end_line": 25,
+          "label": "Ingress Config"
+        }
+      ]
+    },
+    {
+      "id": "mcp_pod",
+      "type": "backend",
+      "label": "MCP Server Pod",
+      "sublabel": "FastMCP :8001 (/mcp)",
+      "tag": "app team",
+      "pos": [
+        300,
+        430
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "docker-compose.yml",
+          "line": 68,
+          "end_line": 95,
+          "label": "MCP Deployment"
+        }
+      ]
+    },
+    {
+      "id": "ui_pod",
+      "type": "frontend",
+      "label": "Frontend Pod",
+      "sublabel": "Next.js UI :3000",
+      "tag": "app team",
+      "pos": [
+        560,
+        150
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "docker-compose.yml",
+          "line": 135,
+          "end_line": 158,
+          "label": "UI Service"
+        }
+      ]
+    },
+    {
+      "id": "api_pods",
+      "type": "backend",
+      "label": "EphapticOS API Pods",
+      "sublabel": "FastAPI :8000 (HPA)",
+      "tag": "app team",
+      "pos": [
+        560,
+        290
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "deployment/helm/values.yaml",
+          "line": 26,
+          "end_line": 50,
+          "label": "API Deployment"
+        }
+      ]
+    },
+    {
+      "id": "secrets_store",
+      "type": "security",
+      "label": "Cluster Secrets",
+      "sublabel": "K8s Secret / DB Password",
+      "tag": "security",
+      "pos": [
+        560,
+        430
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "deployment/helm/values.yaml",
+          "line": 22,
+          "end_line": 30,
+          "label": "Secret Values"
+        }
+      ]
+    },
+    {
+      "id": "observability",
+      "type": "external",
+      "label": "Observability / SRE",
+      "sublabel": "Prometheus / OTLP Traces",
+      "tag": "SRE",
+      "pos": [
+        820,
+        150
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "deployment/helm/values.yaml",
+          "line": 47,
+          "end_line": 65,
+          "label": "Health Probes"
+        }
+      ]
+    },
+    {
+      "id": "worker_pool",
+      "type": "backend",
+      "label": "Subprocess Workers",
+      "sublabel": "IPC Engine Pool",
+      "tag": "app team",
+      "pos": [
+        820,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS_db_workers/harness.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Worker Harness"
+        }
+      ]
+    },
+    {
+      "id": "storage_pvc",
+      "type": "cloud",
+      "label": "Persistent Volumes",
+      "sublabel": "ReadWriteMany PVC",
+      "tag": "platform",
+      "pos": [
+        820,
+        430
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "docker-compose.yml",
+          "line": 14,
+          "end_line": 25,
+          "label": "Named Volumes"
+        }
+      ]
+    },
+    {
+      "id": "neo4j_cluster",
+      "type": "database",
+      "label": "Neo4j Graph Store",
+      "sublabel": "Bolt :7687 / HTTP :7474",
+      "tag": "data team",
+      "pos": [
+        1080,
+        150
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "docker-compose.yml",
+          "line": 180,
+          "end_line": 195,
+          "label": "Neo4j Service"
+        }
+      ]
+    },
+    {
+      "id": "postgres_db",
+      "type": "database",
+      "label": "PostgreSQL + PGVector",
+      "sublabel": "Primary :5432 (Stateful)",
+      "tag": "data team",
+      "pos": [
+        1080,
+        290
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "deployment/helm/values.yaml",
+          "line": 69,
+          "end_line": 85,
+          "label": "Postgres StatefulSet"
+        }
+      ]
+    },
+    {
+      "id": "llm_service",
+      "type": "external",
+      "label": "LLM Provider API",
+      "sublabel": "OpenAI / Claude / Gemini",
+      "tag": "external SaaS",
+      "pos": [
+        1340,
+        150
+      ],
+      "size": [
+        140,
+        62
+      ]
+    },
+    {
+      "id": "embed_service",
+      "type": "external",
+      "label": "Embedding Service",
+      "sublabel": "FastEmbed / Hosted API",
+      "tag": "external SaaS",
+      "pos": [
+        1340,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ]
+    },
+    {
+      "id": "dr_replica",
+      "type": "database",
+      "label": "Disaster Recovery",
+      "sublabel": "Cross-Region (Unconfigured)",
+      "tag": "unconfigured",
+      "pos": [
+        1340,
+        430
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "distributed/deploy/README.md",
+          "line": 1,
+          "end_line": 20,
+          "label": "Deploy Guide"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Cloud Region / Production (AWS us-east-1)",
+      "wraps": [
+        "ingress_lb",
+        "mcp_pod",
+        "ui_pod",
+        "api_pods",
+        "secrets_store",
+        "observability",
+        "worker_pool",
+        "storage_pvc",
+        "neo4j_cluster",
+        "postgres_db"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "Public DMZ & Ingress Network",
+      "wraps": [
+        "ingress_lb",
+        "mcp_pod"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "Private Application Cluster Subnet",
+      "wraps": [
+        "ui_pod",
+        "api_pods",
+        "secrets_store",
+        "observability",
+        "worker_pool"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "Stateful Data Subnet (No Public IP)",
+      "wraps": [
+        "storage_pvc",
+        "neo4j_cluster",
+        "postgres_db"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Disaster Recovery Region (Unconfigured in Manifests)",
+      "wraps": [
+        "dr_replica"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "clients",
+      "to": "ingress_lb",
+      "label": "HTTPS / TLS 1.3",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "route": "straight"
+    },
+    {
+      "from": "ingress_lb",
+      "to": "mcp_pod",
+      "label": "HTTP :8001 (/mcp)",
+      "variant": "security",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "straight"
+    },
+    {
+      "from": "ingress_lb",
+      "to": "ui_pod",
+      "label": "HTTP :3000",
+      "variant": "default"
+    },
+    {
+      "from": "ingress_lb",
+      "to": "api_pods",
+      "label": "HTTP :8000 (mTLS)",
+      "variant": "security",
+      "fromSide": "right",
+      "toSide": "left",
+      "route": "straight"
+    },
+    {
+      "from": "ui_pod",
+      "to": "api_pods",
+      "label": "REST / CORS",
+      "variant": "default",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "straight"
+    },
+    {
+      "from": "secrets_store",
+      "to": "api_pods",
+      "label": "K8s Env Secret",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "route": "straight"
+    },
+    {
+      "from": "api_pods",
+      "to": "observability",
+      "label": "OTLP / :8000/health",
+      "variant": "dashed"
+    },
+    {
+      "from": "api_pods",
+      "to": "worker_pool",
+      "label": "IPC Spawning",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "route": "straight"
+    },
+    {
+      "from": "worker_pool",
+      "to": "storage_pvc",
+      "label": "PVC Mount",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "straight"
+    },
+    {
+      "from": "worker_pool",
+      "to": "postgres_db",
+      "label": "TCP :5432 (pgvector)",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "route": "straight"
+    },
+    {
+      "from": "worker_pool",
+      "to": "neo4j_cluster",
+      "label": "Bolt :7687",
+      "variant": "default"
+    },
+    {
+      "from": "neo4j_cluster",
+      "to": "llm_service",
+      "label": "Cypher QA",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left",
+      "route": "straight"
+    },
+    {
+      "from": "postgres_db",
+      "to": "embed_service",
+      "label": "Vector Sync",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left",
+      "route": "straight"
+    },
+    {
+      "from": "postgres_db",
+      "to": "dr_replica",
+      "label": "WAL Stream (Unconfigured)",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Network & Cluster Topology",
+      "items": [
+        "Public ingress terminates TLS 1.3 at Cloud Load Balancer / Ingress Controller",
+        "Workloads run inside private Kubernetes cluster subnets without direct public IPs",
+        "Stateful data tier is segregated in an isolated private database subnet"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Workloads & Stateful Services",
+      "items": [
+        "Stateless workloads: EphapticOS FastAPI Pods (scalable via HPA), Next.js UI, and FastMCP Pods",
+        "Stateful services: PostgreSQL 17 + PGVector for relational ACLs and dense vector indexes",
+        "Property Graph: Neo4j 5.26 cluster with APOC plugins for knowledge graph relationships",
+        "Storage: ReadWriteMany PersistentVolumeClaim for filesystem and LanceDB/Kuzu local files"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Ownership & Trust Boundaries",
+      "items": [
+        "Platform team owns Ingress, Kubernetes cluster infrastructure, and storage PVCs",
+        "Application team owns FastAPI API pods, UI frontend, MCP server, and worker pool",
+        "Data team owns PostgreSQL and Neo4j database deployments and backups",
+        "Security team manages cluster secrets, credentials, and network policies"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Explicitly Unconfigured / Unknown Areas",
+      "items": [
+        "Disaster Recovery cross-region replication is not configured in repository manifests",
+        "Egress NAT gateway and Cloud WAF are infrastructure-dependent and marked as unmanaged",
+        "External LLM SaaS credentials must be provided via external secrets store"
+      ]
+    }
+  ]
+}

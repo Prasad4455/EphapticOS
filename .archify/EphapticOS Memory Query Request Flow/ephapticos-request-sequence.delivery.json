@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "921c5da0-5531-42df-823c-f28109df3e58",
+  "status": "current",
+  "command": "deliver",
+  "type": "sequence",
+  "input": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\ephapticos-request-sequence.json",
+  "output": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\ephapticos-request-sequence.html",
+  "specification": {
+    "sha256": "17e0c6aa728485eca8838343315471aa568542c62b56823a01b37aa86b496f31",
+    "bytes": 3858
+  },
+  "artifact": {
+    "sha256": "3f0417e91ae64ef9252a3f4cd4f66c8b14e4b6680ff124a9d9f67970b83cf2d4",
+    "bytes": 759344
+  }
+}

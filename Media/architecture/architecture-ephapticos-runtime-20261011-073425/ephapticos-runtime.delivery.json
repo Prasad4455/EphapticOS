@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "5246cdc5-3223-4138-94e8-37d16619210e",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\.archify\\architecture-ephapticos-runtime-20261011-073425\\candidate.json",
+  "output": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\.archify\\architecture-ephapticos-runtime-20261011-073425\\ephapticos-runtime.html",
+  "specification": {
+    "sha256": "290909a0f082696f54580f1cfead80717b22935a79a6a9772401952285b9aed8",
+    "bytes": 13797
+  },
+  "artifact": {
+    "sha256": "3b3eb522bf4530e9b81564c34b6d6c88dbac8d51e89e9b699f9104c0c8710049",
+    "bytes": 792164
+  }
+}

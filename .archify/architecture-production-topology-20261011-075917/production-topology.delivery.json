@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "44fa13dc-96b4-497b-b70a-62a8cddfec67",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\.archify\\architecture-production-topology-20261011-075917\\candidate.json",
+  "output": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\.archify\\architecture-production-topology-20261011-075917\\production-topology.html",
+  "specification": {
+    "sha256": "0808f9e5224c1c765f8f32d31e3cb07e49323fb0ce6a31901612467cd117df75",
+    "bytes": 12124
+  },
+  "artifact": {
+    "sha256": "387eb2b5927dbe293d495140c7fc4c0f75b11566dd77ad66ca6cef57d728aef9",
+    "bytes": 781897
+  }
+}

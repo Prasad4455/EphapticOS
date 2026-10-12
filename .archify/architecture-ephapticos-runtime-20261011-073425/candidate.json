@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "EphapticOS High-Level Runtime Architecture",
+    "output": ".archify/architecture-ephapticos-runtime-20261011-073425/ephapticos-runtime.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Prasad4455/EphapticOS.git",
+      "provider": "github",
+      "revision": "65a2f532a46eafa8cad923ee198f5add05c6b214"
+    }
+  },
+  "components": [
+    {
+      "id": "ui_client",
+      "type": "frontend",
+      "label": "Web UI Client",
+      "sublabel": "Next.js Dashboard",
+      "pos": [
+        40,
+        150
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS-frontend/package.json",
+          "line": 1,
+          "end_line": 25,
+          "label": "Next.js UI"
+        }
+      ]
+    },
+    {
+      "id": "cli_tool",
+      "type": "frontend",
+      "label": "EphapticOS CLI",
+      "sublabel": "Terminal Interface",
+      "pos": [
+        40,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/cli/_EphapticOS.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "CLI Entry"
+        }
+      ]
+    },
+    {
+      "id": "mcp_server",
+      "type": "backend",
+      "label": "MCP Server",
+      "sublabel": "FastMCP Protocol",
+      "pos": [
+        40,
+        430
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS-mcp/src/server.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "MCP Server"
+        }
+      ]
+    },
+    {
+      "id": "api_gateway",
+      "type": "security",
+      "label": "FastAPI Gateway",
+      "sublabel": "Uvicorn HTTP :8000",
+      "pos": [
+        280,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/api/client.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "API Client"
+        }
+      ]
+    },
+    {
+      "id": "auth_engine",
+      "type": "security",
+      "label": "Auth & RBAC",
+      "sublabel": "Access Control",
+      "pos": [
+        280,
+        430
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/api/client.py",
+          "line": 75,
+          "end_line": 90,
+          "label": "Auth Router"
+        }
+      ]
+    },
+    {
+      "id": "relational_db",
+      "type": "database",
+      "label": "Relational DB",
+      "sublabel": "SQLite / Postgres",
+      "pos": [
+        280,
+        570
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/infrastructure/databases/relational/__init__.py",
+          "line": 1,
+          "end_line": 10,
+          "label": "Relational"
+        }
+      ]
+    },
+    {
+      "id": "session_engine",
+      "type": "backend",
+      "label": "Session Engine",
+      "sublabel": "Context & Feedback",
+      "pos": [
+        530,
+        150
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/modules/session_lifecycle/__init__.py",
+          "line": 1,
+          "end_line": 20,
+          "label": "Session Lifecycle"
+        }
+      ]
+    },
+    {
+      "id": "memory_router",
+      "type": "backend",
+      "label": "Memory Router",
+      "sublabel": "remember / recall",
+      "pos": [
+        530,
+        290
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/api/v1/remember/routers/get_remember_router.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Remember Router"
+        }
+      ]
+    },
+    {
+      "id": "dataset_queue",
+      "type": "messagebus",
+      "label": "Dataset Queue",
+      "sublabel": "FIFO Slot Semaphores",
+      "pos": [
+        530,
+        430
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/infrastructure/databases/dataset_queue/queue.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Dataset Queue"
+        }
+      ]
+    },
+    {
+      "id": "ephaptify_engine",
+      "type": "backend",
+      "label": "Ephaptify Extractor",
+      "sublabel": "Graph Extraction",
+      "pos": [
+        790,
+        150
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/modules/Ephaptify/config.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Ephaptify"
+        }
+      ]
+    },
+    {
+      "id": "ingestion_pipeline",
+      "type": "backend",
+      "label": "Ingestion Pipeline",
+      "sublabel": "add / Chunking Tasks",
+      "pos": [
+        790,
+        290
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/modules/ingestion/save_data_to_file.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Ingestion"
+        }
+      ]
+    },
+    {
+      "id": "ontology_manager",
+      "type": "backend",
+      "label": "Ontology Engine",
+      "sublabel": "DataPoint Schemas",
+      "pos": [
+        790,
+        430
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/modules/ontology/models.py",
+          "line": 1,
+          "end_line": 20,
+          "label": "Ontology"
+        }
+      ]
+    },
+    {
+      "id": "retrieval_engine",
+      "type": "backend",
+      "label": "Retrieval Engine",
+      "sublabel": "Hybrid Graph Fusion",
+      "pos": [
+        790,
+        570
+      ],
+      "size": [
+        144,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/modules/retrieval/hybrid_retriever.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Retrieval"
+        }
+      ]
+    },
+    {
+      "id": "graph_db",
+      "type": "database",
+      "label": "Graph Store",
+      "sublabel": "Kuzu / Neo4j",
+      "pos": [
+        1050,
+        150
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/infrastructure/databases/graph/get_graph_engine.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Graph DB"
+        }
+      ]
+    },
+    {
+      "id": "db_worker_pool",
+      "type": "backend",
+      "label": "DB Workers",
+      "sublabel": "Isolated Subprocesses",
+      "pos": [
+        1050,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS_db_workers/harness.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Worker Harness"
+        }
+      ]
+    },
+    {
+      "id": "vector_db",
+      "type": "database",
+      "label": "Vector Store",
+      "sublabel": "LanceDB / PGVector",
+      "pos": [
+        1050,
+        430
+      ],
+      "size": [
+        140,
+        62
+      ],
+      "sources": [
+        {
+          "path": "EphapticOS/infrastructure/databases/vector/get_vector_engine.py",
+          "line": 1,
+          "end_line": 25,
+          "label": "Vector DB"
+        }
+      ]
+    },
+    {
+      "id": "llm_service",
+      "type": "external",
+      "label": "LLM Provider API",
+      "sublabel": "OpenAI / Claude / Gemini",
+      "pos": [
+        1300,
+        150
+      ],
+      "size": [
+        140,
+        62
+      ]
+    },
+    {
+      "id": "embed_service",
+      "type": "external",
+      "label": "Embedding API",
+      "sublabel": "FastEmbed / Text Embed",
+      "pos": [
+        1300,
+        290
+      ],
+      "size": [
+        140,
+        62
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Client Ingress Zone",
+      "wraps": [
+        "ui_client",
+        "cli_tool",
+        "mcp_server"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Shared Control Plane (Auth & Registry)",
+      "wraps": [
+        "api_gateway",
+        "auth_engine",
+        "relational_db"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Tenant Execution & Pipeline Plane",
+      "wraps": [
+        "session_engine",
+        "memory_router",
+        "dataset_queue",
+        "ephaptify_engine",
+        "ingestion_pipeline",
+        "ontology_manager",
+        "retrieval_engine"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "Tenant-Isolated Storage Plane",
+      "wraps": [
+        "graph_db",
+        "db_worker_pool",
+        "vector_db"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "External Cloud & AI Services",
+      "wraps": [
+        "llm_service",
+        "embed_service"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "cli_tool",
+      "to": "api_gateway",
+      "label": "POST /remember",
+      "variant": "emphasis"
+    },
+    {
+      "from": "api_gateway",
+      "to": "memory_router",
+      "label": "dispatch request",
+      "variant": "emphasis"
+    },
+    {
+      "from": "memory_router",
+      "to": "ingestion_pipeline",
+      "label": "execute pipeline",
+      "variant": "emphasis"
+    },
+    {
+      "from": "ingestion_pipeline",
+      "to": "ephaptify_engine",
+      "label": "extract graph",
+      "variant": "emphasis"
+    },
+    {
+      "from": "ingestion_pipeline",
+      "to": "db_worker_pool",
+      "label": "dispatch writes",
+      "variant": "emphasis"
+    },
+    {
+      "from": "db_worker_pool",
+      "to": "graph_db",
+      "label": "commit graph",
+      "variant": "emphasis"
+    },
+    {
+      "from": "db_worker_pool",
+      "to": "vector_db",
+      "label": "index vectors",
+      "variant": "emphasis"
+    },
+    {
+      "from": "ui_client",
+      "to": "api_gateway",
+      "label": "HTTP REST",
+      "variant": "default"
+    },
+    {
+      "from": "mcp_server",
+      "to": "api_gateway",
+      "label": "stdio / SSE",
+      "variant": "default"
+    },
+    {
+      "from": "api_gateway",
+      "to": "auth_engine",
+      "label": "verify tenant",
+      "variant": "security"
+    },
+    {
+      "from": "auth_engine",
+      "to": "relational_db",
+      "label": "ACL query",
+      "variant": "security"
+    },
+    {
+      "from": "memory_router",
+      "to": "dataset_queue",
+      "label": "acquire mutex",
+      "variant": "dashed"
+    },
+    {
+      "from": "session_engine",
+      "to": "memory_router",
+      "label": "history context",
+      "variant": "dashed"
+    },
+    {
+      "from": "ingestion_pipeline",
+      "to": "ontology_manager",
+      "label": "DataPoint schema",
+      "variant": "dashed"
+    },
+    {
+      "from": "retrieval_engine",
+      "to": "vector_db",
+      "label": "vector search",
+      "variant": "default"
+    },
+    {
+      "from": "memory_router",
+      "to": "retrieval_engine",
+      "label": "recall query",
+      "variant": "default"
+    },
+    {
+      "from": "ephaptify_engine",
+      "to": "llm_service",
+      "label": "entity extraction",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "top",
+      "via": [
+        [
+          862,
+          90
+        ],
+        [
+          1370,
+          90
+        ]
+      ]
+    },
+    {
+      "from": "db_worker_pool",
+      "to": "embed_service",
+      "label": "dense vectors",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Ingress & Control Plane",
+      "items": [
+        "Clients connect via Web UI (Next.js), CLI, or Model Context Protocol (FastMCP)",
+        "FastAPI Gateway authenticates requests and resolves tenant workspace contexts",
+        "Shared Relational Meta Store (SQLite/Postgres) persists users, permissions, and dataset registrations"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Primary Data Path: remember Ingestion",
+      "items": [
+        "POST /remember arrives at API Gateway and dispatches to Memory Router",
+        "Dataset Queue enforces per-process concurrency caps via FIFO slot semaphores",
+        "Ingestion Pipeline splits documents into semantic chunks and triggers Ephaptify Extractor",
+        "Ephaptify queries LLM Provider to extract entities & relationships against DataPoint schemas",
+        "Subprocess DB Workers asynchronously commit knowledge graph to Kuzu and vectors to LanceDB"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Trust Boundaries & Multi-Tenancy",
+      "items": [
+        "Client Ingress: External untrusted client surface (Web UI, CLI, MCP)",
+        "Control Plane: Shared across tenants for global identity and RBAC authorization",
+        "Tenant Processing: Scoped execution context with per-dataset concurrency control",
+        "Isolated Storage: Dedicated database instances per dataset preventing cross-tenant leakage"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "External Service Integrations",
+      "items": [
+        "LLM Provider API: Frontier models (OpenAI, Claude, Gemini) or local CPU models (GLiNER)",
+        "Embedding Provider API: Dense semantic vector embeddings via FastEmbed or OpenAI Embeddings"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "d7ae1833-da7a-4de9-9606-e6dfcbef86ad",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\.archify\\workflow-agent-tool-call-loop-20261011-093844\\candidate.json",
+  "output": "C:\\TruPrints99\\Ai_LLM_Project\\AntiGravity_Projects\\EphapticOS\\.archify\\workflow-agent-tool-call-loop-20261011-093844\\agent-tool-call-loop.html",
+  "specification": {
+    "sha256": "b5fc8f729e83497a8ee75cea182fb95bbf938136255dcf7a381e11ddb0c7547b",
+    "bytes": 9793
+  },
+  "artifact": {
+    "sha256": "db99a61b3defb202c14c994ef1b000dcdb22e6b50021900c1244e4e492f9fe6b",
+    "bytes": 774052
+  }
+}

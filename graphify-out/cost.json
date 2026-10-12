@@ -1,0 +1,8 @@
+{
+  "total_files": 5900,
+  "total_nodes": 57110,
+  "total_edges": 143403,
+  "communities": 1772,
+  "cost_usd": 0.0,
+  "extraction_method": "ast_and_hybrid_structural"
+}

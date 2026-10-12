@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "EphapticOS Memory Query Request Flow",
+    "output": "ephapticos-request-sequence.html",
+    "viewBox": [1080, 650],
+    "column_fit": "spread",
+    "animation": "trace",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    { "id": "caller", "type": "external", "label": "Caller", "sublabel": "Agent / Client" },
+    { "id": "api", "type": "backend", "label": "FastAPI Gateway", "sublabel": "POST /v1/recall" },
+    { "id": "auth", "type": "security", "label": "Auth & ACL", "sublabel": "tenant + key check" },
+    { "id": "cache", "type": "database", "label": "Session Cache", "sublabel": "Redis / Turso" },
+    { "id": "store", "type": "database", "label": "Graph & Vector", "sublabel": "hybrid engine" },
+    { "id": "trace", "type": "messagebus", "label": "Auto-Feedback", "sublabel": "async event bus" }
+  ],
+  "segments": [
+    { "from": 150, "to": 240, "label": "Authentication & Ingress" },
+    { "from": 248, "to": 435, "label": "Cache Probe & Persistence Fallback" },
+    { "from": 445, "to": 550, "label": "Response & Async Event Emission" }
+  ],
+  "messages": [
+    { "id": "msg-ingress", "from": "caller", "to": "api", "y": 165, "label": "POST /v1/recall", "variant": "emphasis" },
+    { "id": "msg-auth-verify", "from": "api", "to": "auth", "y": 195, "label": "verify key + tenant", "variant": "security" },
+    { "id": "msg-auth-ok", "from": "auth", "to": "api", "y": 225, "label": "claims valid", "variant": "return" },
+    { "id": "msg-cache-get", "from": "api", "to": "cache", "y": 265, "label": "lookup session cache", "variant": "default" },
+    { "id": "msg-cache-miss", "from": "cache", "to": "api", "y": 295, "label": "cache miss", "variant": "return" },
+    { "id": "msg-store-query", "from": "api", "to": "store", "y": 335, "label": "hybrid query (graph + vector)", "variant": "emphasis" },
+    { "id": "msg-store-result", "from": "store", "to": "api", "y": 375, "label": "subgraphs + chunks", "variant": "return" },
+    { "id": "msg-cache-set", "from": "api", "to": "cache", "y": 410, "label": "populate cache", "variant": "dashed" },
+    { "id": "msg-caller-resp", "from": "api", "to": "caller", "y": 465, "label": "200 OK memory context", "variant": "return" },
+    { "id": "msg-trace-emit", "from": "api", "to": "trace", "y": 510, "label": "emit recall trace + feedback", "variant": "dashed" }
+  ],
+  "activations": [
+    { "participant": "api", "from": 165, "to": 515, "type": "backend" },
+    { "participant": "auth", "from": 190, "to": 230, "type": "security" },
+    { "participant": "cache", "from": 260, "to": 300, "type": "database" },
+    { "participant": "store", "from": 330, "to": 380, "type": "database" },
+    { "participant": "cache", "from": 405, "to": 420, "type": "database" },
+    { "participant": "trace", "from": 505, "to": 535, "type": "messagebus" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Auth & Ingress Path",
+      "items": [
+        "Caller initiates POST /v1/recall with tenant credentials",
+        "FastAPI middleware delegates to Auth for tenant ACL verification",
+        "Only authorized sessions proceed to data layers"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Cache Miss & Fallback",
+      "items": [
+        "Session cache probed first to short-circuit latency",
+        "Cache miss triggers hybrid fallback across Graph and Vector stores",
+        "Synthesized context primes the cache for subsequent turns"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Decoupled Async Trace",
+      "items": [
+        "200 OK response returns immediately to caller with relevant context",
+        "Auto-feedback and turn traces emit asynchronously to the event bus",
+        "Telemetry and evaluation stay decoupled from user response latency"
+      ]
+    }
+  ]
+}
