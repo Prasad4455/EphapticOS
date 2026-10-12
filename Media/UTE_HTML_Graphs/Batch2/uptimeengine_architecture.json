@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "UpTimeEngine System Architecture",
+    "output": "uptimeengine_architecture.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "investigation-path",
+        "label": "Primary investigation path",
+        "focus": ["alert_source", "api_server", "agent_orchestrator", "llm_gateway", "toolset_manager", "target_infra", "incident_dest"],
+        "note": "Follow the end-to-end incident investigation flow from alert ingress through iterative reasoning to remediation."
+      },
+      {
+        "id": "trust-boundaries",
+        "label": "Ownership and trust boundaries",
+        "focus": ["alert_source", "api_server", "agent_orchestrator", "toolset_manager", "target_infra"],
+        "note": "Examine the separation between untrusted public ingress, private runtime control plane, and customer infrastructure."
+      },
+      {
+        "id": "supporting-systems",
+        "label": "Supporting services & state",
+        "focus": ["api_server", "agent_orchestrator", "prompt_engine", "state_store", "telemetry"],
+        "note": "Platform state persistence, prompt compilation, and telemetry collection operate out-of-band."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "alert_source",
+      "type": "external",
+      "label": "Incident Ingress",
+      "sublabel": "AlertManager, PagerDuty",
+      "tag": "untrusted ingress",
+      "pos": [40, 240],
+      "size": [160, 70]
+    },
+    {
+      "id": "cli_operator",
+      "type": "backend",
+      "label": "SRE Operator CLI",
+      "sublabel": "Typer terminal UI",
+      "tag": "operator entrypoint",
+      "pos": [40, 410],
+      "size": [160, 66]
+    },
+    {
+      "id": "prompt_engine",
+      "type": "backend",
+      "label": "Prompt Engine",
+      "sublabel": "Dynamic skills & tools",
+      "tag": "context builder",
+      "pos": [290, 80],
+      "size": [170, 68]
+    },
+    {
+      "id": "api_server",
+      "type": "backend",
+      "label": "FastAPI Server",
+      "sublabel": "REST, Webhooks & Auth",
+      "tag": "ingress gateway",
+      "pos": [290, 240],
+      "size": [170, 70]
+    },
+    {
+      "id": "llm_gateway",
+      "type": "external",
+      "label": "LLM Providers",
+      "sublabel": "OpenAI, Anthropic, Bedrock",
+      "tag": "inference vendor",
+      "pos": [550, 80],
+      "size": [190, 68]
+    },
+    {
+      "id": "agent_orchestrator",
+      "type": "backend",
+      "label": "ToolCallingLLM",
+      "sublabel": "Reason-act loop & budget",
+      "tag": "core orchestration",
+      "pos": [550, 240],
+      "size": [190, 74]
+    },
+    {
+      "id": "state_store",
+      "type": "database",
+      "label": "Platform State",
+      "sublabel": "Supabase / PostgreSQL DAL",
+      "tag": "managed persistence",
+      "pos": [550, 410],
+      "size": [190, 68]
+    },
+    {
+      "id": "toolset_manager",
+      "type": "backend",
+      "label": "Toolset Manager",
+      "sublabel": "Pre-checks & tool dispatch",
+      "tag": "execution gateway",
+      "pos": [830, 240],
+      "size": [180, 74]
+    },
+    {
+      "id": "telemetry",
+      "type": "external",
+      "label": "Telemetry & Tracing",
+      "sublabel": "OTel, Sentry, Braintrust",
+      "tag": "observability",
+      "pos": [830, 410],
+      "size": [180, 68]
+    },
+    {
+      "id": "target_infra",
+      "type": "external",
+      "label": "Target Infrastructure",
+      "sublabel": "Kubernetes & Prometheus",
+      "tag": "customer environment",
+      "brand": "kubernetes",
+      "pos": [1100, 240],
+      "size": [180, 74]
+    },
+    {
+      "id": "incident_dest",
+      "type": "external",
+      "label": "Incident Delivery",
+      "sublabel": "Slack, Jira, PagerDuty",
+      "tag": "outbound destination",
+      "pos": [1100, 410],
+      "size": [180, 68]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "External Ingress & Operator Domain",
+      "wraps": ["alert_source", "cli_operator"],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "UpTimeEngine Private Control Plane",
+      "wraps": ["api_server", "prompt_engine", "agent_orchestrator", "state_store", "toolset_manager"],
+      "pad": 22
+    },
+    {
+      "kind": "security-group",
+      "label": "Agent Orchestration Sandbox",
+      "wraps": ["agent_orchestrator", "toolset_manager"],
+      "pad": 14
+    },
+    {
+      "kind": "region",
+      "label": "External LLM Providers",
+      "wraps": ["llm_gateway"],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Target Customer Infrastructure",
+      "wraps": ["target_infra"],
+      "pad": 18
+    },
+    {
+      "kind": "region",
+      "label": "External Delivery & Observability",
+      "wraps": ["telemetry", "incident_dest"],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "from": "alert_source",
+      "to": "api_server",
+      "label": "1. Ingest alert",
+      "variant": "emphasis"
+    },
+    {
+      "from": "api_server",
+      "to": "agent_orchestrator",
+      "label": "2. Dispatch run",
+      "variant": "emphasis"
+    },
+    {
+      "from": "agent_orchestrator",
+      "to": "llm_gateway",
+      "label": "3. Reason & tool call",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelDy": -25
+    },
+    {
+      "from": "agent_orchestrator",
+      "to": "toolset_manager",
+      "label": "4. Invoke tool",
+      "variant": "emphasis"
+    },
+    {
+      "from": "toolset_manager",
+      "to": "target_infra",
+      "label": "5. Query metrics",
+      "variant": "emphasis"
+    },
+    {
+      "from": "toolset_manager",
+      "to": "incident_dest",
+      "label": "6. Deliver remediation",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "left"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Core Runtime & Orchestration",
+      "items": [
+        "FastAPI server and Typer CLI serve as ingress layers; requests route into ToolCallingLLM, an iterative reason-act engine.",
+        "Prompt Engine dynamically inspects registered skills and active toolsets to compose scoped OpenAI-compatible prompts.",
+        "Toolset Manager enforces prerequisite checks in parallel, isolating misconfigured integrations so startup remains resilient."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Trust Boundaries & Security",
+      "items": [
+        "Untrusted Ingress: External alerts and webhooks terminate at the API Server with bearer-token validation.",
+        "Private Orchestration Plane: The LLM reason-act loop executes within an isolated boundary with built-in tool approval gates.",
+        "Customer Boundary: Target infrastructure access (Kube API, PromQL, Cloud SDKs) uses scoped least-privilege credentials."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "State, Telemetry & Dependencies",
+      "items": [
+        "Persistence: Supabase DAL manages platform state, conversation histories, OAuth refresh tokens, and feedback asynchronously.",
+        "Telemetry: OpenTelemetry, Sentry, and Braintrust receive spans, exception captures, and LLM token usage stats out-of-band.",
+        "Extensibility: Source and destination plugins normalize incident ingestion and outbound Slack / Jira notifications."
+      ]
+    }
+  ]
+}

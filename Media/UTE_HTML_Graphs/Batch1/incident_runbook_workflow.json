@@ -1,0 +1,99 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Incident Runbook Responder Workflow",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "primary-mitigation",
+        "label": "Primary Mitigation & Recovery",
+        "focus": ["alert_trigger", "triage_assess", "decision_rollback_vs_patch", "sre_rollback_exec", "verify_health", "close_incident"],
+        "note": "Trace a SEV-1 incident from alert detection through IC triage, mitigation decision, SRE rollback, health verification, and closure."
+      },
+      {
+        "id": "decision-gates-comms",
+        "label": "Decision Gates & Comms",
+        "focus": ["triage_assess", "comms_status_page", "decision_rollback_vs_patch", "comms_rca_notify"],
+        "note": "Separate explicit decision gates from execution actions and parallel communication channels."
+      },
+      {
+        "id": "unowned-boundary",
+        "label": "Missing Ownership & Escalations",
+        "focus": ["decision_rollback_vs_patch", "unowned_escalation_gate", "verify_health", "unowned_post_mortem"],
+        "note": "Expose unassigned decision bottlenecks and orphan post-incident action items."
+      }
+    ],
+    "output": "C:/Users/Deepe/.gemini/antigravity-ide/brain/75008546-b451-431e-a4a6-057c378be7b1/incident_runbook_workflow.html"
+  },
+  "lanes": [
+    { "id": "detection_monitoring", "label": "Detection & Monitoring" },
+    { "id": "incident_commander", "label": "Incident Commander" },
+    { "id": "sre_responder", "label": "SRE & Engineering" },
+    { "id": "comms_lead", "label": "Communications Lead" },
+    { "id": "unassigned_boundary", "label": "Unassigned & Boundary", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "intake_triage", "label": "Detection & Initial Triage", "fromCol": 0, "toCol": 1 },
+    { "id": "mitigate_escalate", "label": "Mitigation & Decision Gates", "fromCol": 2, "toCol": 3, "variant": "security" },
+    { "id": "recover_verify", "label": "Rollback & Recovery Verification", "fromCol": 4, "toCol": 5, "variant": "emphasis" }
+  ],
+  "groups": [
+    { "id": "triage_group", "label": "Incident Triage & Comms", "lane": "incident_commander", "fromCol": 1, "toCol": 2, "variant": "emphasis" },
+    { "id": "decision_group", "label": "Mitigation Decision Control", "lane": "sre_responder", "fromCol": 2, "toCol": 3, "variant": "security" },
+    { "id": "unowned_group", "label": "Unassigned Decision Risk", "lane": "unassigned_boundary", "fromCol": 3, "toCol": 5, "variant": "dashed" }
+  ],
+  "mainPath": ["alert_trigger", "triage_assess", "decision_rollback_vs_patch", "sre_rollback_exec", "verify_health", "close_incident"],
+  "nodes": [
+    { "id": "alert_trigger", "lane": "detection_monitoring", "col": 0, "type": "cloud", "label": "SLO Breach Alert", "sublabel": "automated PagerDuty alert", "tag": "alert intake", "width": 156 },
+    { "id": "triage_assess", "lane": "incident_commander", "col": 1, "type": "backend", "label": "Severity Triage Action", "sublabel": "assess user impact & budget", "tag": "IC ownership", "width": 156 },
+    { "id": "comms_status_page", "lane": "comms_lead", "col": 1, "type": "frontend", "label": "Status Page Update", "sublabel": "post SEV-1 notification", "tag": "comms lead", "width": 156 },
+    { "id": "decision_rollback_vs_patch", "lane": "incident_commander", "col": 2, "type": "security", "label": "Mitigation Decision", "sublabel": "rollback vs live patch", "tag": "decision gate", "width": 160 },
+    { "id": "sre_rollback_exec", "lane": "sre_responder", "col": 3, "type": "backend", "label": "Execute Canary Rollback", "sublabel": "reverts traffic to LKG", "tag": "SRE action", "width": 156 },
+    { "id": "unowned_escalation_gate", "lane": "unassigned_boundary", "col": 3, "type": "security", "label": "Unowned Escalation Gate", "sublabel": "unassigned executive bypass", "tag": "MISSING OWNER", "width": 164 },
+    { "id": "verify_health", "lane": "detection_monitoring", "col": 4, "type": "database", "label": "Recovery Verify", "sublabel": "verify error rate & latency", "tag": "smoke verify", "width": 120 },
+    { "id": "comms_rca_notify", "lane": "comms_lead", "col": 4, "type": "frontend", "label": "Resolved Update", "sublabel": "publish resolution update", "tag": "comms lead", "width": 120 },
+    { "id": "close_incident", "lane": "incident_commander", "col": 5, "type": "backend", "label": "Close & Schedule RCA", "sublabel": "archive timeline & post-mortem", "tag": "post-incident", "width": 156 },
+    { "id": "unowned_post_mortem", "lane": "unassigned_boundary", "col": 5, "type": "security", "label": "Unassigned Action Items", "sublabel": "unassigned follow-up tasks", "tag": "MISSING OWNER", "width": 156 }
+  ],
+  "edges": [
+    { "id": "alert-to-triage", "from": "alert_trigger", "to": "triage_assess", "variant": "default", "role": "main", "label": "fire alert" },
+    { "id": "triage-to-comms", "from": "triage_assess", "to": "comms_status_page", "variant": "dashed", "role": "async", "label": "declare SEV-1" },
+    { "id": "triage-to-decision", "from": "triage_assess", "to": "decision_rollback_vs_patch", "variant": "default", "role": "main", "label": "evaluate mitigation" },
+    { "id": "decision-rollback", "from": "decision_rollback_vs_patch", "to": "sre_rollback_exec", "variant": "emphasis", "role": "main", "label": "rollback approved" },
+    { "id": "decision-unowned-escalate", "from": "decision_rollback_vs_patch", "to": "unowned_escalation_gate", "variant": "security", "role": "error", "label": "unclear policy / no owner" },
+    { "id": "rollback-to-verify", "from": "sre_rollback_exec", "to": "verify_health", "variant": "default", "role": "main", "label": "traffic reverted" },
+    { "id": "verify-pass", "from": "verify_health", "to": "close_incident", "variant": "emphasis", "role": "main", "label": "metrics healthy" },
+    { "id": "verify-comms", "from": "verify_health", "to": "comms_rca_notify", "variant": "dashed", "role": "async", "label": "all green", "route": "straight" },
+    { "id": "verify-fail-escalate", "from": "verify_health", "to": "unowned_escalation_gate", "variant": "dashed", "role": "error", "label": "degradation continues" },
+    { "id": "close-to-postmortem", "from": "close_incident", "to": "unowned_post_mortem", "variant": "dashed", "role": "async", "label": "unassigned follow-ups", "route": "straight" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Primary Runbook Path",
+      "items": [
+        "Automated SLO breach alert triggers IC triage and SEV-1 status declaration",
+        "IC evaluates Mitigation Decision Gate and approves immediate SRE canary rollback",
+        "SLO metrics & error rates pass Recovery Verification, closing incident for RCA"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Decision Gates vs Actions",
+      "items": [
+        "Decision Gates (security styling): Mitigation Decision Gate & Escalation Gate enforce explicit policy choices",
+        "Execution Actions: Triage, status page update, SRE rollback execution, and telemetry verification"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Missing Ownership Risks",
+      "items": [
+        "Unowned Escalation Gate: Ambiguous executive bypass policies create responder deadlocks",
+        "Unassigned Action Items: Orphaned post-incident tasks without assigned engineering leads risk recurrence"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "UpTimeEngine Production Deployment Topology",
+    "output": "up-time-engine-production-topology.html",
+    "quality_profile": "showcase",
+    "animation": "trace",
+    "views": [
+      {
+        "id": "request-path",
+        "label": "Primary request path",
+        "focus": ["alerting", "server", "agent_loop", "toolsets", "llm_provider"],
+        "note": "Follow the investigation path from a triggering alert or ticket into the runtime loop and back to the caller."
+      },
+      {
+        "id": "trust-boundaries",
+        "label": "Trust and ownership boundaries",
+        "focus": ["public_net", "server", "config", "toolsets", "observability"],
+        "note": "Public input and external systems meet a private runtime boundary with user-owned config and platform-managed state."
+      },
+      {
+        "id": "state-and-ops",
+        "label": "State and operations",
+        "focus": ["server", "stateful_services", "observability", "toolsets", "llm_provider"],
+        "note": "The runtime depends on external data sources and remote platform state while emitting telemetry for operational visibility."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "alerting",
+      "type": "external",
+      "label": "Alerting / ticketing",
+      "sublabel": "Prometheus, PagerDuty, Jira, GitHub",
+      "tag": "customer / ops",
+      "pos": [30, 320],
+      "size": [150, 68]
+    },
+    {
+      "id": "cli",
+      "type": "backend",
+      "label": "UTE CLI",
+      "sublabel": "ask / investigate / checks",
+      "tag": "operator-owned",
+      "pos": [230, 280],
+      "size": [140, 62]
+    },
+    {
+      "id": "server",
+      "type": "backend",
+      "label": "UTE API Server",
+      "sublabel": "FastAPI + Uvicorn",
+      "tag": "runtime service",
+      "pos": [430, 280],
+      "size": [150, 66]
+    },
+    {
+      "id": "config",
+      "type": "security",
+      "label": "Config + auth",
+      "sublabel": "YAML / env / OAuth tokens",
+      "tag": "customer trust boundary",
+      "pos": [430, 120],
+      "size": [150, 62]
+    },
+    {
+      "id": "agent_loop",
+      "type": "backend",
+      "label": "ToolCallingLLM",
+      "sublabel": "agentic investigation loop",
+      "tag": "platform runtime",
+      "pos": [660, 280],
+      "size": [170, 68]
+    },
+    {
+      "id": "toolsets",
+      "type": "backend",
+      "label": "Toolsets / plugins",
+      "sublabel": "Kubernetes, Grafana, Prometheus, SQL, AWS, MCP",
+      "tag": "integrations layer",
+      "pos": [930, 280],
+      "size": [180, 70]
+    },
+    {
+      "id": "stateful_services",
+      "type": "database",
+      "label": "Stateful services",
+      "sublabel": "Supabase / platform state / conversations",
+      "tag": "managed platform state",
+      "pos": [930, 470],
+      "size": [180, 66]
+    },
+    {
+      "id": "llm_provider",
+      "type": "external",
+      "label": "LLM provider",
+      "sublabel": "OpenAI / Anthropic / Azure / Bedrock",
+      "tag": "external vendor",
+      "pos": [1210, 280],
+      "size": [150, 68]
+    },
+    {
+      "id": "observability",
+      "type": "external",
+      "label": "Monitoring / telemetry",
+      "sublabel": "Sentry, OTel, Braintrust",
+      "tag": "SRE / ops",
+      "pos": [1210, 120],
+      "size": [160, 68]
+    },
+    {
+      "id": "operator",
+      "type": "backend",
+      "label": "Operator mode",
+      "sublabel": "scheduled checks / investigations",
+      "tag": "SRE automation",
+      "pos": [230, 470],
+      "size": [160, 66]
+    },
+    {
+      "id": "unknown_cluster",
+      "type": "cloud",
+      "label": "Unknown production cluster",
+      "sublabel": "provider / zone / network not declared",
+      "tag": "deployment details unknown",
+      "pos": [430, 470],
+      "size": [180, 70]
+    },
+    {
+      "id": "public_net",
+      "type": "cloud",
+      "label": "Public network boundary",
+      "sublabel": "internet / untrusted ingress",
+      "tag": "external trust domain",
+      "pos": [30, 120],
+      "size": [150, 64]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Production region (unknown provider / zone)",
+      "wraps": ["cli", "server", "config", "agent_loop", "toolsets", "stateful_services", "operator", "unknown_cluster"],
+      "pad": 26
+    },
+    {
+      "kind": "security-group",
+      "label": "Private runtime network",
+      "wraps": ["server", "agent_loop", "toolsets", "stateful_services", "operator", "unknown_cluster"],
+      "pad": 18
+    },
+    {
+      "kind": "security-group",
+      "label": "Public trust boundary",
+      "wraps": ["alerting", "public_net", "cli"],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "from": "alerting",
+      "to": "cli",
+      "label": "HTTPS / webhook / API",
+      "variant": "emphasis"
+    },
+    {
+      "from": "public_net",
+      "to": "server",
+      "label": "ingress",
+      "variant": "security"
+    },
+    {
+      "from": "server",
+      "to": "config",
+      "label": "load config",
+      "variant": "dashed"
+    },
+    {
+      "from": "server",
+      "to": "agent_loop",
+      "label": "request / orchestration",
+      "variant": "emphasis"
+    },
+    {
+      "from": "agent_loop",
+      "to": "toolsets",
+      "label": "tool calls",
+      "variant": "emphasis"
+    },
+    {
+      "from": "toolsets",
+      "to": "stateful_services",
+      "label": "platform state",
+      "variant": "security",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [[1110, 308], [1110, 470], [930, 470]]
+    },
+    {
+      "from": "toolsets",
+      "to": "llm_provider",
+      "label": "LLM API",
+      "variant": "security",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelAt": [1160, 286]
+    },
+    {
+      "from": "toolsets",
+      "to": "observability",
+      "label": "telemetry",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelAt": [1145, 170]
+    },
+    {
+      "from": "operator",
+      "to": "toolsets",
+      "label": "background checks",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [[490, 503], [490, 420], [860, 420], [860, 315], [930, 315]],
+      "labelAt": [600, 430]
+    },
+    {
+      "from": "unknown_cluster",
+      "to": "stateful_services",
+      "label": "cluster state",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelAt": [750, 500]
+    },
+    {
+      "from": "server",
+      "to": "stateful_services",
+      "label": "state + status",
+      "variant": "security",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [[650, 313], [650, 503], [930, 503]],
+      "labelAt": [672, 410]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Core runtime",
+      "items": [
+        "The repo exposes a Typer CLI and a FastAPI server as the runtime entry points; the tool-calling agent loop is the main investigative path.",
+        "Toolsets are plugin-based and can query Kubernetes, Prometheus, Grafana, cloud APIs, SQL, and MCP services.",
+        "The same runtime supports local CLI use and background operator mode in production.",
+        "Exact cluster topology is not declared in the repo; this area is intentionally marked as unknown."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Cross-boundary mechanisms",
+      "items": [
+        "HTTPS / webhook / API from existing alerting and ticketing systems into the runtime.",
+        "HTTPS API calls to LLM providers and platform services such as Supabase / Ephaptic.",
+        "OTLP and telemetry exports to observability vendors, with Sentry and Braintrust explicitly present in dependency and runtime code.",
+        "OAuth and environment-based configuration are local trust-plane inputs; the repo does not declare a single identity broker."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Ownership and trust",
+      "items": [
+        "The public side is untrusted input; the private runtime boundary is the operational trust domain.",
+        "Platform-managed state sits in Supabase-backed service layers, while the customer controls local config and credentials.",
+        "The repo names external dependencies but not a concrete production provider, region, or network mapping; that is deliberately left unknown."
+      ]
+    }
+  ]
+}

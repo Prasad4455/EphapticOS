@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Architecture Document: UpTimeEngine</title>
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: #121a2b;
+        --panel-2: #1b2540;
+        --border: #2a395f;
+        --text: #e8edf7;
+        --muted: #aab7d1;
+        --accent: #66d9ef;
+        --accent-2: #8de7a8;
+        --warn: #f5d76d;
+        --code-bg: #0d1323;
+        --shadow: rgba(0, 0, 0, 0.28);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, #0b1020 0%, #101827 100%);
+        color: var(--text);
+        font-family: Segoe UI, Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 20px 80px;
+      }
+
+      h1, h2, h3 {
+        letter-spacing: -0.02em;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 3vw, 3rem);
+      }
+
+      h2 {
+        margin-top: 2rem;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--border);
+        font-size: clamp(1.4rem, 2vw, 2.1rem);
+      }
+
+      h3 {
+        margin-top: 1.4rem;
+        font-size: 1.15rem;
+        color: var(--accent);
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+
+      .section {
+        background: rgba(18, 26, 43, 0.9);
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 26px var(--shadow);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin-top: 18px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        background: rgba(11, 16, 32, 0.45);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      th, td {
+        text-align: left;
+        vertical-align: top;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        background: var(--panel-2);
+        color: var(--accent);
+      }
+
+      ul, ol {
+        padding-left: 1.4rem;
+      }
+
+      li {
+        margin: 0.4rem 0;
+      }
+
+      code {
+        font-family: Consolas, monospace;
+        background: var(--code-bg);
+        color: #d9f3ff;
+        border: 1px solid var(--border);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      .pill {
+        display: inline-block;
+        background: rgba(102, 217, 239, 0.12);
+        color: var(--accent);
+        border: 1px solid rgba(102, 217, 239, 0.4);
+        border-radius: 999px;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        margin-right: 8px;
+        margin-bottom: 10px;
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Technical Architecture Document: UpTimeEngine</h1>
+      <div class="meta">Single-page architecture analysis based on the repository structure, runtime entry points, and core integration patterns.</div>
+
+      <div class="section">
+        <h2>1. System Overview & Paradigms</h2>
+
+        <p><strong>Core Paradigm:</strong> UpTimeEngine is a layered, agentic investigation platform rather than a classic CRUD application. Its central pattern is a runtime that builds a prompt, loads a dynamic tool catalog, invokes an LLM, executes tool calls against live infrastructure data, captures results, and iterates until it can deliver an operational conclusion.</p>
+
+        <p><strong>Architectural style:</strong> hybrid of layered architecture and tool-driven agent orchestration. The repository separates configuration, orchestration, tool execution, source integrations, and rendering surfaces.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Concrete technology</th>
+              <th>Architectural role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Presentation / CLI</td>
+              <td>Typer, Rich</td>
+              <td>User entry point for ask, investigate, checks, and tool management</td>
+            </tr>
+            <tr>
+              <td>API / server surface</td>
+              <td>FastAPI, Uvicorn</td>
+              <td>REST endpoints for admin and health-check execution</td>
+            </tr>
+            <tr>
+              <td>Configuration</td>
+              <td>Pydantic models, YAML, env overrides</td>
+              <td>Combined model for runtime, credentials, toolset selection, and model registry</td>
+            </tr>
+            <tr>
+              <td>Model access</td>
+              <td>LiteLLM and provider abstraction</td>
+              <td>Normalizes LLM access across providers and model metadata</td>
+            </tr>
+            <tr>
+              <td>Agent orchestration</td>
+              <td>ToolCallingLLM, ToolExecutor, prompt generation</td>
+              <td>Controls iterative investigation and tool usage</td>
+            </tr>
+            <tr>
+              <td>Tool integration</td>
+              <td>Python toolsets, MCP servers, kubectl/bash wrappers, HTTP integrations</td>
+              <td>Connects to Prometheus, Kubernetes, cloud APIs, and SaaS systems</td>
+            </tr>
+            <tr>
+              <td>Data services</td>
+              <td>Supabase DAL, file caches, config/status JSON</td>
+              <td>Stores metadata, OAuth state, and operational status</td>
+            </tr>
+            <tr>
+              <td>Telemetry / observability</td>
+              <td>Sentry, OTel, Braintrust, structured logging</td>
+              <td>Captures runtime error and usage data for operations and experiments</td>
+            </tr>
+            <tr>
+              <td>Infrastructure integration</td>
+              <td>Kubernetes, AlertManager, Jira, PagerDuty, OpsGenie, Slack, GitHub, databases</td>
+              <td>External systems queried or updated during investigations</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>System boundaries</h3>
+        <ul>
+          <li><strong>Handled directly by the repository:</strong> CLI startup, server setup, configuration, LLM orchestration, toolset lifecycle, prompt generation, plugin connections, admin endpoints, and health-check execution.</li>
+          <li><strong>Delegated to external infrastructure:</strong> model providers, Kubernetes clusters, observability backends, ticketing systems, cloud APIs, and telemetry services.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>2. Directory Taxonomy & Component Mapping</h2>
+
+        <ul>
+          <li><strong>UpTimeEngine/:</strong> main application runtime; contains the CLI, configuration, orchestration framework, and shared utilities.</li>
+          <li><strong>UpTimeEngine/core/:</strong> orchestration and domain execution heart of the platform. Contains the LLM loop, toolset manager, prompt logic, tracing, usage recording, and scheduled operations.</li>
+          <li><strong>UpTimeEngine/plugins/:</strong> pluggable extension layer responsible for sources, destinations, toolsets, prompts, and skills.</li>
+          <li><strong>UpTimeEngine/admin/:</strong> administrative FastAPI surface for reloading toolsets and models at runtime.</li>
+          <li><strong>UpTimeEngine/checks/:</strong> health-check execution framework and API entry points.</li>
+          <li><strong>UpTimeEngine/utils/:</strong> cross-cutting helpers for auth, env setup, file handling, logging, formatting, and runtime support.</li>
+          <li><strong>server.py:</strong> API server bootstrap and long-lived runtime wiring; initializes config, tracing, status sync, admin and checks routes.</li>
+          <li><strong>tests/:</strong> functional, integration, and LLM evaluation coverage for regressions and platform behavior.</li>
+          <li><strong>docs/:</strong> user documentation and site content used for installation, platform docs, walkthroughs, and toolset reference pages.</li>
+          <li><strong>helm/:</strong> deployment packaging and Kubernetes chart resources.</li>
+          <li><strong>scripts/:</strong> supporting operational workflows such as sandbox setup, benchmarking, and environment prep.</li>
+        </ul>
+
+        <h3>Key concrete modules</h3>
+        <ul>
+          <li><code>UpTimeEngine/main.py</code>: public CLI entry point; wires prompts, toolsets, and investigation commands.</li>
+          <li><code>UpTimeEngine/config.py</code>: config model, environment fallback logic, and tool/LLM creation factories.</li>
+          <li><code>UpTimeEngine/core/tool_calling_llm.py</code>: iterative tool-call loop, approval behavior, and result handling.</li>
+          <li><code>UpTimeEngine/core/toolset_manager.py</code>: loads built-in/custom toolsets and executes prerequisite checks.</li>
+          <li><code>UpTimeEngine/core/llm.py</code>: model registry and provider configuration.</li>
+          <li><code>UpTimeEngine/plugins/toolsets/__init__.py</code>: built-in toolset composition including Prometheus, Kubernetes, Grafana, Docker, database, and MCP integrations.</li>
+          <li><code>UpTimeEngine/plugins/interfaces.py</code>: source and destination plugin contracts.</li>
+          <li><code>UpTimeEngine/plugins/sources/prometheus/plugin.py</code>: AlertManager issue ingestion logic.</li>
+          <li><code>UpTimeEngine/admin/admin_api.py</code>: admin API to reload models and toolsets live.</li>
+          <li><code>UpTimeEngine/checks/checks_api.py</code>: health-check execution endpoint for operator-style checks.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>3. End-to-End Data Flow & Lifecycle</h2>
+
+        <ol>
+          <li><strong>Ingress / transport:</strong> A user invokes an ask or investigate command via Typer in <code>UpTimeEngine/main.py</code>, or a server API route in <code>server.py</code> initiates a request.</li>
+          <li><strong>Validation / configuration:</strong> <code>Config.load_from_file()</code> or <code>Config.load_from_env()</code> merges YAML and environment input, resolves model settings, toolset config, and credentials.</li>
+          <li><strong>Toolset bootstrap:</strong> the ToolsetManager loads built-in and custom toolsets, checks prerequisites, filters by tag, and prepares a runnable ToolExecutor.</li>
+          <li><strong>Prompt construction:</strong> <code>build_chat_messages()</code> and prompt-building helpers create the system and user content based on the current tool inventory and skill catalog.</li>
+          <li><strong>Application / orchestration:</strong> <code>ToolCallingLLM</code> sends messages to the LLM and handles the iterative tool-call cycle, approval logic, and context management.</li>
+          <li><strong>Domain / business logic:</strong> the model decides which external systems and tools to query, aligned with the available toolset schema and operational instructions.</li>
+          <li><strong>Persistence / egress:</strong> tool outputs are returned as structured tool results, sent through the user-facing formatter or destination plugin, and optionally recorded to telemetry or ticket sources.</li>
+        </ol>
+
+        <p>The runtime design is intentionally data-flow-heavy and live-query-based: it retrieves operational evidence from external systems instead of maintaining a local warehouse as the primary source of truth.</p>
+      </div>
+
+      <div class="section">
+        <h2>4. State Management & Data Architecture</h2>
+
+        <h3>Data models & boundaries</h3>
+        <p>The repository uses a clear but pragmatic boundary model:</p>
+        <ul>
+          <li><strong>Config models:</strong> define environment-driven state such as model selection, API keys, and source credentials in <code>UpTimeEngine/config.py</code>.</li>
+          <li><strong>Tool metadata:</strong> parameter schemas and execution contracts live in <code>UpTimeEngine/core/tools.py</code>.</li>
+          <li><strong>Issue models:</strong> incident data from Prometheus, Jira, PagerDuty, and related sources are normalized into internal issue representations.</li>
+          <li><strong>Runtime payloads:</strong> chat messages, tool results, and LLM output are passed as structured objects rather than being stored in a monolithic domain model.</li>
+        </ul>
+
+        <h3>Persistence strategy</h3>
+        <ul>
+          <li>Static config is persisted as YAML and environment configuration.</li>
+          <li>Toolset readiness is cached as status JSON and refreshable at runtime.</li>
+          <li>Supabase acts as a metadata and identity layer for runtime state, OAuth, and skill hierarchy.</li>
+          <li>Tool outputs are often stored to disk or streamed for memory-safe processing rather than all being retained in memory.</li>
+        </ul>
+
+        <h3>Event / messaging system</h3>
+        <p>The project does not implement a centralized event bus like Kafka or RabbitMQ as the primary runtime control-plane. Instead, it relies on:</p>
+        <ul>
+          <li>background conversation worker flows under <code>UpTimeEngine/core/conversations_worker</code>,</li>
+          <li>scheduled prompt execution under <code>UpTimeEngine/core/scheduled_prompts</code>,</li>
+          <li>event callbacks from the interactive loop and tracing system,</li>
+          <li>and operational notifications to Slack and other destinations.</li>
+        </ul>
+        <p>This is effectively an event-driven orchestration model without forcing a heavy broker topology.</p>
+      </div>
+
+      <div class="section">
+        <h2>5. Cross-Cutting Concerns</h2>
+
+        <h3>Authentication & authorization</h3>
+        <ul>
+          <li>Credentials are supplied through YAML config or environment variables and then merged into the Config model.</li>
+          <li>API-layer auth and session helpers exist in <code>UpTimeEngine/utils/auth.py</code>.</li>
+          <li>OAuth flows are supported via <code>UpTimeEngine/core/oauth_config.py</code>, <code>UpTimeEngine/core/oauth_utils.py</code>, and related callback management.</li>
+          <li>The project explicitly positions itself as honoring read-only access and RBAC assumptions, which is important in production incident investigation.</li>
+        </ul>
+
+        <h3>Observability</h3>
+        <ul>
+          <li>Structured logging is configured in <code>server.py</code> and utility layers.</li>
+          <li>Sentry is enabled for runtime diagnostics and error reporting.</li>
+          <li>OpenTelemetry and Braintrust tracing hooks are integrated for request and experiment telemetry.</li>
+          <li>Usage accounting and token accounting are tracked in <code>UpTimeEngine/core/usage_recorder.py</code> and <code>UpTimeEngine/core/llm_usage.py</code>.</li>
+        </ul>
+
+        <h3>Error handling & resiliency</h3>
+        <ul>
+          <li>Toolsets are health-checked independently; a failed integration does not necessarily crash the platform.</li>
+          <li>Prerequisite checks are time-bounded to avoid blocked startup from a single stale datasource.</li>
+          <li>Approval gates and safeguards reduce unsafe or repeated tool calls.</li>
+          <li>Tool outputs are normalized into structured statuses such as success, error, no_data, approval_required, and frontend_pause.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Architecture Summary</h2>
+        <p>UpTimeEngine is a modular AI operations runtime whose core abstraction is a dynamic toolset registry plus an iterative LLM execution loop. This design enables the platform to investigate live operational systems in a provider-flexible and tool-safe manner while preserving strong observability and graceful degradation under partial system failure.</p>
+        <p>In practical terms, the repository is built as a production-oriented incident engine: it gathers evidence from live infrastructure, normalizes it into a common investigation model, reasons over it with an LLM, and then emits a diagnosis or action path to human operators or downstream systems.</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,335 @@
+{
+    "schema_version": 1,
+    "diagram_type": "dataflow",
+    "meta": {
+        "title": "Enterprise Event-Stream Architecture & DLQ Topology",
+        "output": "event_stream_topology.html",
+        "viewBox": [
+            1080,
+            520
+        ],
+        "animation": "trace",
+        "quality_profile": "showcase",
+        "views": [
+            {
+                "id": "order-transit-path",
+                "label": "Order Transit Path",
+                "focus": [
+                    "checkout_api",
+                    "orders_topic",
+                    "order_validator",
+                    "order_state",
+                    "fulfillment_svc"
+                ],
+                "note": "Follow an order from checkout producer through partition-keyed transit to fulfillment."
+            },
+            {
+                "id": "payment-transit-path",
+                "label": "Payment Stream & Matching",
+                "focus": [
+                    "billing_api",
+                    "payments_topic",
+                    "payment_enricher",
+                    "order_state",
+                    "analytics_store",
+                    "analytics_sink"
+                ],
+                "note": "Track payment events through enrichment, state reconciliation, and downstream analytics."
+            },
+            {
+                "id": "dlq-and-replay",
+                "label": "DLQ Quarantine & Replay",
+                "focus": [
+                    "order_validator",
+                    "dlq_topic",
+                    "replay_engine",
+                    "orders_topic"
+                ],
+                "note": "Isolate dead letters, quarantined poison events, and the audited operator replay loop."
+            }
+        ]
+    },
+    "stages": [
+        {
+            "label": "Producers"
+        },
+        {
+            "label": "Event Topics"
+        },
+        {
+            "label": "Ordered Processors"
+        },
+        {
+            "label": "State & Recovery"
+        },
+        {
+            "label": "Consumers"
+        }
+    ],
+    "nodes": [
+        {
+            "id": "checkout_api",
+            "type": "frontend",
+            "label": "Checkout Gateway",
+            "sublabel": "order producer",
+            "stage": 0,
+            "row": 0,
+            "tag": "team checkout"
+        },
+        {
+            "id": "billing_api",
+            "type": "backend",
+            "label": "Billing Service",
+            "sublabel": "payment producer",
+            "stage": 0,
+            "row": 2,
+            "tag": "team billing"
+        },
+        {
+            "id": "orders_topic",
+            "type": "messagebus",
+            "label": "orders.v1",
+            "sublabel": "12 partitions",
+            "stage": 1,
+            "row": 0,
+            "tag": "key: order_id"
+        },
+        {
+            "id": "payments_topic",
+            "type": "messagebus",
+            "label": "payments.v2",
+            "sublabel": "8 partitions",
+            "stage": 1,
+            "row": 2,
+            "tag": "key: order_id"
+        },
+        {
+            "id": "order_validator",
+            "type": "backend",
+            "label": "Order Validator",
+            "sublabel": "group fulfillment",
+            "stage": 2,
+            "row": 0,
+            "tag": "ordered"
+        },
+        {
+            "id": "payment_enricher",
+            "type": "backend",
+            "label": "Payment Enricher",
+            "sublabel": "group analytics",
+            "stage": 2,
+            "row": 2,
+            "tag": "at-least-once"
+        },
+        {
+            "id": "dlq_topic",
+            "type": "messagebus",
+            "label": "events.dlq",
+            "sublabel": "poison events",
+            "stage": 3,
+            "row": 0,
+            "tag": "7-day retention"
+        },
+        {
+            "id": "order_state",
+            "type": "database",
+            "label": "Order State",
+            "sublabel": "materialized view",
+            "stage": 3,
+            "row": 1,
+            "tag": "idempotent"
+        },
+        {
+            "id": "analytics_store",
+            "type": "database",
+            "label": "Payment State",
+            "sublabel": "streaming ledger",
+            "stage": 3,
+            "row": 2,
+            "tag": "idempotent"
+        },
+        {
+            "id": "replay_engine",
+            "type": "security",
+            "label": "Replay Engine",
+            "sublabel": "operator gate",
+            "stage": 4,
+            "row": 0,
+            "tag": "SRE audited"
+        },
+        {
+            "id": "fulfillment_svc",
+            "type": "backend",
+            "label": "Fulfillment",
+            "sublabel": "shipping workflow",
+            "stage": 4,
+            "row": 1,
+            "tag": "consumer"
+        },
+        {
+            "id": "analytics_sink",
+            "type": "backend",
+            "label": "Analytics Sink",
+            "sublabel": "streaming facts",
+            "stage": 4,
+            "row": 2,
+            "tag": "consumer"
+        }
+    ],
+    "flows": [
+        {
+            "id": "flow-order-placed",
+            "from": "checkout_api",
+            "to": "orders_topic",
+            "label": "OrderPlaced",
+            "classification": "schema v1",
+            "variant": "emphasis",
+            "route": "straight"
+        },
+        {
+            "id": "flow-payment-captured",
+            "from": "billing_api",
+            "to": "payments_topic",
+            "label": "PaymentCaptured",
+            "classification": "schema v2",
+            "variant": "emphasis",
+            "route": "straight"
+        },
+        {
+            "id": "flow-orders-consume",
+            "from": "orders_topic",
+            "to": "order_validator",
+            "label": "ordered orders",
+            "classification": "consumer group",
+            "variant": "emphasis",
+            "route": "straight"
+        },
+        {
+            "id": "flow-payments-consume",
+            "from": "payments_topic",
+            "to": "payment_enricher",
+            "label": "payment facts",
+            "classification": "at-least-once",
+            "variant": "emphasis",
+            "route": "straight"
+        },
+        {
+            "id": "flow-invalid-to-dlq",
+            "from": "order_validator",
+            "to": "dlq_topic",
+            "label": "invalid event",
+            "classification": "dead letter",
+            "variant": "security",
+            "route": "straight",
+            "labelDy": -26
+        },
+        {
+            "id": "flow-valid-order-state",
+            "from": "order_validator",
+            "to": "order_state",
+            "label": "valid order",
+            "classification": "idempotent",
+            "variant": "emphasis",
+            "route": "vertical-channel"
+        },
+        {
+            "id": "flow-payment-to-state",
+            "from": "payment_enricher",
+            "to": "order_state",
+            "label": "payment match",
+            "classification": "idempotent",
+            "variant": "default",
+            "route": "vertical-channel"
+        },
+        {
+            "id": "flow-payment-to-ledger",
+            "from": "payment_enricher",
+            "to": "analytics_store",
+            "label": "ledger facts",
+            "classification": "at-least-once",
+            "variant": "emphasis",
+            "route": "straight",
+            "labelDy": 28
+        },
+        {
+            "id": "flow-dlq-to-replay",
+            "from": "dlq_topic",
+            "to": "replay_engine",
+            "label": "quarantined",
+            "classification": "poison events",
+            "variant": "security",
+            "route": "straight"
+        },
+        {
+            "id": "flow-replay-loop",
+            "from": "replay_engine",
+            "to": "orders_topic",
+            "label": "approved replay",
+            "classification": "audited batch",
+            "variant": "dashed",
+            "fromSide": "top",
+            "toSide": "top",
+            "via": [
+                [
+                    960,
+                    85
+                ],
+                [
+                    315,
+                    85
+                ]
+            ],
+            "labelAt": [
+                638,
+                70
+            ]
+        },
+        {
+            "id": "flow-state-to-fulfillment",
+            "from": "order_state",
+            "to": "fulfillment_svc",
+            "label": "ready orders",
+            "classification": "read model",
+            "variant": "emphasis",
+            "route": "straight"
+        },
+        {
+            "id": "flow-ledger-to-sink",
+            "from": "analytics_store",
+            "to": "analytics_sink",
+            "label": "settled facts",
+            "classification": "consumer group",
+            "variant": "default",
+            "route": "straight"
+        }
+    ],
+    "cards": [
+        {
+            "dot": "amber",
+            "title": "Transit Contract",
+            "items": [
+                "Producers partition events by order ID to preserve sequential delivery",
+                "Consumer groups manage offset commitments with strict partition ordering",
+                "Schema versions are enforced at producer topic boundaries"
+            ]
+        },
+        {
+            "dot": "emerald",
+            "title": "State & Delivery Semantics",
+            "items": [
+                "Processors write idempotent materialized views to prevent duplicate effects",
+                "Fulfillment and analytics consume dedicated, independent read models",
+                "At-least-once processing guarantees zero message loss across brokers"
+            ]
+        },
+        {
+            "dot": "rose",
+            "title": "Dead-Letter & Replay",
+            "items": [
+                "Malformed and poison events divert into events.dlq with 7-day retention",
+                "Replay Engine acts as an audited operator gate for selective batch re-injection",
+                "Replayed events route back to the primary ingress topic under SRE audit"
+            ]
+        }
+    ]
+}

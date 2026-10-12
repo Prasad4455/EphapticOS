@@ -1,0 +1,19 @@
+Analyze this repository and understand its high-level runtime architecture.
+Then use Archify to create the diagram. 
+Choose the diagram type that best fits what I need to understand:
+Architecture, Workflow, Sequence, Data Flow, or Lifecycle.
+Keep the diagram focused. 
+Show 15–24 core runtime components, one primary request or data path, external dependencies, ownership or trust boundaries, and put supporting detail in cards instead of adding more edges.
+Clearly label: 
+- External services
+- Databases
+- Queues
+- Major internal services
+- Component connections
+- Trust boundaries
+Put supporting information in cards rather  than adding more edges to the main diagram. 
+Generate and verify a standalone HTML file.  
+Confirm that component search works. 
+Confirm that upstream/downstream tracing works.
+Then export a high-resolution
+2400 × 1260 PNG.3

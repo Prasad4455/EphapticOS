@@ -1,0 +1,274 @@
+{
+    "schema_version": 1,
+    "diagram_type": "sequence",
+    "meta": {
+        "title": "Request Lifecycle with Auth, Cache Fallback & Async Trace",
+        "output": "request_lifecycle_sequence.html",
+        "viewBox": [
+            1080,
+            560
+        ],
+        "column_fit": "spread",
+        "animation": "trace",
+        "quality_profile": "showcase",
+        "views": [
+            {
+                "id": "ingress-and-auth",
+                "label": "Ingress and identity",
+                "focus": [
+                    "client",
+                    "gateway",
+                    "auth"
+                ],
+                "note": "Follow caller entry and cryptographic JWT verification at the edge."
+            },
+            {
+                "id": "cache-fallback",
+                "label": "Cache fallback",
+                "focus": [
+                    "engine",
+                    "cache",
+                    "db"
+                ],
+                "note": "Trace cache inspection, miss return, and persistence fallback query."
+            },
+            {
+                "id": "async-trace-return",
+                "label": "Return and trace",
+                "focus": [
+                    "engine",
+                    "telemetry",
+                    "gateway",
+                    "client"
+                ],
+                "note": "Separate synchronous user response from non-blocking trace telemetry."
+            }
+        ]
+    },
+    "participants": [
+        {
+            "id": "client",
+            "type": "external",
+            "label": "SRE Client",
+            "sublabel": "investigation CLI"
+        },
+        {
+            "id": "gateway",
+            "type": "frontend",
+            "label": "API Gateway",
+            "sublabel": "reverse proxy"
+        },
+        {
+            "id": "auth",
+            "type": "security",
+            "label": "Auth Service",
+            "sublabel": "JWT validation"
+        },
+        {
+            "id": "engine",
+            "type": "backend",
+            "label": "Query Engine",
+            "sublabel": "RCA service"
+        },
+        {
+            "id": "cache",
+            "type": "database",
+            "label": "Redis Cache",
+            "sublabel": "state cache"
+        },
+        {
+            "id": "db",
+            "type": "database",
+            "label": "Postgres Lake",
+            "sublabel": "source of truth"
+        },
+        {
+            "id": "telemetry",
+            "type": "messagebus",
+            "label": "OTel Collector",
+            "sublabel": "async event trace"
+        }
+    ],
+    "segments": [
+        {
+            "from": 150,
+            "to": 255,
+            "label": "Ingress + Auth"
+        },
+        {
+            "from": 260,
+            "to": 370,
+            "label": "Cache Fallback"
+        },
+        {
+            "from": 375,
+            "to": 480,
+            "label": "Response + Trace"
+        }
+    ],
+    "messages": [
+        {
+            "id": "msg-request",
+            "from": "client",
+            "to": "gateway",
+            "y": 160,
+            "label": "GET /incidents/42",
+            "variant": "emphasis"
+        },
+        {
+            "id": "msg-verify",
+            "from": "gateway",
+            "to": "auth",
+            "y": 185,
+            "label": "validate bearer",
+            "variant": "security"
+        },
+        {
+            "id": "msg-claims",
+            "from": "auth",
+            "to": "gateway",
+            "y": 215,
+            "label": "token valid",
+            "variant": "return"
+        },
+        {
+            "id": "msg-forward",
+            "from": "gateway",
+            "to": "engine",
+            "y": 243,
+            "label": "fetch incident",
+            "variant": "emphasis"
+        },
+        {
+            "id": "msg-cache-read",
+            "from": "engine",
+            "to": "cache",
+            "y": 271,
+            "label": "get incident:42",
+            "variant": "default"
+        },
+        {
+            "id": "msg-cache-miss",
+            "from": "cache",
+            "to": "engine",
+            "y": 299,
+            "label": "cache miss",
+            "variant": "return"
+        },
+        {
+            "id": "msg-db-query",
+            "from": "engine",
+            "to": "db",
+            "y": 330,
+            "label": "query incident + logs",
+            "variant": "emphasis"
+        },
+        {
+            "id": "msg-db-rows",
+            "from": "db",
+            "to": "engine",
+            "y": 358,
+            "label": "incident records",
+            "variant": "return"
+        },
+        {
+            "id": "msg-cache-set",
+            "from": "engine",
+            "to": "cache",
+            "y": 388,
+            "label": "set incident:42",
+            "variant": "dashed"
+        },
+        {
+            "id": "msg-trace-emit",
+            "from": "engine",
+            "to": "telemetry",
+            "y": 416,
+            "label": "emit span trace",
+            "variant": "dashed"
+        },
+        {
+            "id": "msg-engine-reply",
+            "from": "engine",
+            "to": "gateway",
+            "y": 444,
+            "label": "200 payload",
+            "variant": "return"
+        },
+        {
+            "id": "msg-client-render",
+            "from": "gateway",
+            "to": "client",
+            "y": 469,
+            "label": "render RCA view",
+            "variant": "return"
+        }
+    ],
+    "activations": [
+        {
+            "participant": "gateway",
+            "from": 180,
+            "to": 474,
+            "type": "frontend"
+        },
+        {
+            "participant": "auth",
+            "from": 180,
+            "to": 220,
+            "type": "security"
+        },
+        {
+            "participant": "engine",
+            "from": 238,
+            "to": 450,
+            "type": "backend"
+        },
+        {
+            "participant": "cache",
+            "from": 265,
+            "to": 304,
+            "type": "database"
+        },
+        {
+            "participant": "db",
+            "from": 325,
+            "to": 364,
+            "type": "database"
+        },
+        {
+            "participant": "telemetry",
+            "from": 412,
+            "to": 448,
+            "type": "messagebus"
+        }
+    ],
+    "cards": [
+        {
+            "dot": "emerald",
+            "title": "Ingress & Identity",
+            "items": [
+                "SRE Client initiates request with signed bearer token",
+                "Auth Service performs cryptographic signature validation",
+                "Gateway forwards to Query Engine only after token approval"
+            ]
+        },
+        {
+            "dot": "rose",
+            "title": "Cache Miss & Fallback",
+            "items": [
+                "Query Engine inspects Redis fast cache before database access",
+                "Cache miss explicitly documented as a clean return message",
+                "Persistence query retrieves authoritative incident and log state"
+            ]
+        },
+        {
+            "dot": "orange",
+            "title": "Async Trace & Return",
+            "items": [
+                "Query Engine populates cache and emits span trace asynchronously",
+                "Non-blocking telemetry never delays user response latency",
+                "Synchronous JSON payload renders directly in caller view"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,282 @@
+{
+    "schema_version": 1,
+    "diagram_type": "sequence",
+    "meta": {
+        "title": "Asynchronous Roundtrip & Resilient Execution Lifecycle",
+        "output": "async_roundtrip_sequence.html",
+        "viewBox": [
+            1080,
+            560
+        ],
+        "column_fit": "spread",
+        "animation": "trace",
+        "quality_profile": "showcase",
+        "views": [
+            {
+                "id": "accept-and-enqueue",
+                "label": "Accept & Enqueue",
+                "focus": [
+                    "caller",
+                    "gateway",
+                    "queue"
+                ],
+                "note": "Fast initial acknowledgement after durable task enqueue."
+            },
+            {
+                "id": "execution-and-retry",
+                "label": "Execution & Retry",
+                "focus": [
+                    "queue",
+                    "worker",
+                    "target",
+                    "store"
+                ],
+                "note": "Background processing, timeout handling, and exponential retry backoff."
+            },
+            {
+                "id": "observe-consistency",
+                "label": "Observe Consistency",
+                "focus": [
+                    "worker",
+                    "store",
+                    "notifier",
+                    "caller",
+                    "gateway"
+                ],
+                "note": "Dual observation via signed webhook callback and fallback status polling."
+            }
+        ]
+    },
+    "participants": [
+        {
+            "id": "caller",
+            "type": "external",
+            "label": "Client",
+            "sublabel": "caller session"
+        },
+        {
+            "id": "gateway",
+            "type": "backend",
+            "label": "Job Gateway",
+            "sublabel": "edge ingress"
+        },
+        {
+            "id": "queue",
+            "type": "messagebus",
+            "label": "Task Queue",
+            "sublabel": "durable broker"
+        },
+        {
+            "id": "worker",
+            "type": "backend",
+            "label": "Worker Pool",
+            "sublabel": "async runner"
+        },
+        {
+            "id": "target",
+            "type": "cloud",
+            "label": "Target Host",
+            "sublabel": "managed node"
+        },
+        {
+            "id": "store",
+            "type": "database",
+            "label": "State Store",
+            "sublabel": "source of truth"
+        },
+        {
+            "id": "notifier",
+            "type": "messagebus",
+            "label": "Webhook Relay",
+            "sublabel": "event callback"
+        }
+    ],
+    "segments": [
+        {
+            "from": 150,
+            "to": 232,
+            "label": "Accept & Schedule"
+        },
+        {
+            "from": 238,
+            "to": 372,
+            "label": "Execution & Retry"
+        },
+        {
+            "from": 378,
+            "to": 480,
+            "label": "Callback & Observe"
+        }
+    ],
+    "messages": [
+        {
+            "id": "msg-submit",
+            "from": "caller",
+            "to": "gateway",
+            "y": 160,
+            "label": "POST /remediation",
+            "variant": "emphasis"
+        },
+        {
+            "id": "msg-enqueue",
+            "from": "gateway",
+            "to": "queue",
+            "y": 188,
+            "label": "enqueue task",
+            "variant": "emphasis"
+        },
+        {
+            "id": "msg-ack",
+            "from": "gateway",
+            "to": "caller",
+            "y": 216,
+            "label": "202 Accepted + id",
+            "variant": "return"
+        },
+        {
+            "id": "msg-dispatch",
+            "from": "queue",
+            "to": "worker",
+            "y": 246,
+            "label": "dispatch task",
+            "variant": "emphasis"
+        },
+        {
+            "id": "msg-apply",
+            "from": "worker",
+            "to": "target",
+            "y": 274,
+            "label": "apply config",
+            "variant": "default"
+        },
+        {
+            "id": "msg-timeout",
+            "from": "target",
+            "to": "worker",
+            "y": 302,
+            "label": "timeout 504",
+            "variant": "return"
+        },
+        {
+            "id": "msg-retry",
+            "from": "worker",
+            "to": "queue",
+            "y": 330,
+            "label": "retry backoff",
+            "variant": "dashed"
+        },
+        {
+            "id": "msg-persist",
+            "from": "worker",
+            "to": "store",
+            "y": 358,
+            "label": "persist final state",
+            "variant": "emphasis"
+        },
+        {
+            "id": "msg-emit",
+            "from": "worker",
+            "to": "notifier",
+            "y": 386,
+            "label": "emit task.done",
+            "variant": "dashed"
+        },
+        {
+            "id": "msg-callback",
+            "from": "notifier",
+            "to": "caller",
+            "y": 414,
+            "label": "signed webhook",
+            "variant": "dashed"
+        },
+        {
+            "id": "msg-poll",
+            "from": "caller",
+            "to": "gateway",
+            "y": 442,
+            "label": "GET /status/:id",
+            "variant": "default"
+        },
+        {
+            "id": "msg-observe",
+            "from": "gateway",
+            "to": "caller",
+            "y": 470,
+            "label": "200 state: ready",
+            "variant": "return"
+        }
+    ],
+    "activations": [
+        {
+            "participant": "gateway",
+            "from": 158,
+            "to": 222,
+            "type": "backend"
+        },
+        {
+            "participant": "queue",
+            "from": 184,
+            "to": 252,
+            "type": "messagebus"
+        },
+        {
+            "participant": "worker",
+            "from": 242,
+            "to": 392,
+            "type": "backend"
+        },
+        {
+            "participant": "target",
+            "from": 270,
+            "to": 308,
+            "type": "cloud"
+        },
+        {
+            "participant": "store",
+            "from": 352,
+            "to": 475,
+            "type": "database"
+        },
+        {
+            "participant": "notifier",
+            "from": 382,
+            "to": 420,
+            "type": "messagebus"
+        },
+        {
+            "participant": "gateway",
+            "from": 438,
+            "to": 475,
+            "type": "backend"
+        }
+    ],
+    "cards": [
+        {
+            "dot": "cyan",
+            "title": "Fast Acknowledgement",
+            "items": [
+                "Caller receives durable task ID before background work begins",
+                "Durable queue absorbs spikes without blocking HTTP gateway",
+                "Initial connection terminates immediately with 202 Accepted"
+            ]
+        },
+        {
+            "dot": "orange",
+            "title": "Retry & Timeout Policy",
+            "items": [
+                "Target timeouts trigger exponential backoff re-enqueuing",
+                "Failed operations re-enter queue instead of holding caller socket",
+                "State Store commits immutable final state before notification"
+            ]
+        },
+        {
+            "dot": "emerald",
+            "title": "Dual Observation Paths",
+            "items": [
+                "Webhook Relay dispatches signed callback directly upon completion",
+                "Status polling endpoint acts as bounded fallback verification",
+                "Both observation paths guarantee convergence on final consistency"
+            ]
+        }
+    ]
+}
