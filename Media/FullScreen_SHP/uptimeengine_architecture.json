@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "UpTimeEngine Runtime Architecture",
+    "output": "uptimeengine_architecture.html",
+    "quality_profile": "showcase",
+    "viewBox": [1330, 580],
+    "default_mode": "fullscreen",
+    "views": [
+      {
+        "id": "primary-path",
+        "label": "Primary investigation path",
+        "focus": ["alert_ingress", "api_server", "agent_orchestrator", "llm_provider", "safeguard_gate", "toolset_manager", "target_k8s", "incident_dest"],
+        "note": "Follow the end-to-end incident investigation flow from alert ingress through policy approval to cluster inspection and fix delivery."
+      },
+      {
+        "id": "trust-boundaries",
+        "label": "Ownership and trust boundaries",
+        "focus": ["alert_ingress", "cli_terminal", "api_server", "agent_orchestrator", "safeguard_gate", "toolset_manager", "target_k8s"],
+        "note": "Examine the boundaries between untrusted public ingress, the private UpTimeEngine control plane, and customer infrastructure."
+      },
+      {
+        "id": "state-and-queues",
+        "label": "Databases and queues",
+        "focus": ["supabase_db", "local_cache", "conversation_store", "task_queue", "telemetry_stream", "scheduled_worker"],
+        "note": "State persistence, task queues, and telemetry streams operate out-of-band to decouple background execution."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "alert_ingress",
+      "type": "external",
+      "label": "Alert Ingress",
+      "sublabel": "AlertManager, PagerDuty",
+      "tag": "external trigger",
+      "pos": [40, 190],
+      "size": [160, 68]
+    },
+    {
+      "id": "cli_terminal",
+      "type": "backend",
+      "label": "SRE Operator CLI",
+      "sublabel": "Typer / Rich terminal UI",
+      "tag": "operator interface",
+      "pos": [40, 320],
+      "size": [160, 64]
+    },
+    {
+      "id": "prompt_engine",
+      "type": "backend",
+      "label": "Prompt Engine",
+      "sublabel": "Dynamic skills & tools",
+      "tag": "prompt compiler",
+      "pos": [290, 60],
+      "size": [170, 66]
+    },
+    {
+      "id": "api_server",
+      "type": "backend",
+      "label": "FastAPI Server",
+      "sublabel": "REST API, Webhook & Auth",
+      "tag": "ingress gateway",
+      "pos": [290, 190],
+      "size": [170, 68]
+    },
+    {
+      "id": "auth_manager",
+      "type": "security",
+      "label": "Auth & Secret Vault",
+      "sublabel": "OAuth tokens & API keys",
+      "tag": "credential security",
+      "pos": [290, 320],
+      "size": [170, 64]
+    },
+    {
+      "id": "local_cache",
+      "type": "database",
+      "label": "Toolset Cache",
+      "sublabel": "Local status & YAML config",
+      "tag": "local state",
+      "pos": [290, 450],
+      "size": [170, 64]
+    },
+    {
+      "id": "conversation_store",
+      "type": "database",
+      "label": "Session History",
+      "sublabel": "Multi-turn context & traces",
+      "tag": "session history",
+      "pos": [550, 60],
+      "size": [180, 66]
+    },
+    {
+      "id": "agent_orchestrator",
+      "type": "backend",
+      "label": "ToolCallingLLM",
+      "sublabel": "Reason-act loop & budget",
+      "tag": "core orchestration",
+      "pos": [550, 190],
+      "size": [180, 68]
+    },
+    {
+      "id": "safeguard_gate",
+      "type": "security",
+      "label": "Safeguards & Approvals",
+      "sublabel": "Tool safety checks & policy",
+      "tag": "policy enforcement",
+      "pos": [550, 320],
+      "size": [180, 64]
+    },
+    {
+      "id": "supabase_db",
+      "type": "database",
+      "label": "Platform State DB",
+      "sublabel": "Supabase / PostgreSQL DAL",
+      "tag": "managed persistence",
+      "pos": [550, 450],
+      "size": [180, 64]
+    },
+    {
+      "id": "scheduled_worker",
+      "type": "backend",
+      "label": "Scheduled Worker",
+      "sublabel": "Proactive check cron",
+      "tag": "background runner",
+      "pos": [820, 60],
+      "size": [180, 66]
+    },
+    {
+      "id": "task_queue",
+      "type": "messagebus",
+      "label": "Async Task Queue",
+      "sublabel": "Background job queue",
+      "tag": "job queue",
+      "pos": [820, 190],
+      "size": [180, 68]
+    },
+    {
+      "id": "toolset_manager",
+      "type": "backend",
+      "label": "Toolset Manager",
+      "sublabel": "Pre-checks & tool dispatch",
+      "tag": "tool gateway",
+      "pos": [820, 320],
+      "size": [180, 68]
+    },
+    {
+      "id": "telemetry_stream",
+      "type": "messagebus",
+      "label": "OTel Event Stream",
+      "sublabel": "Buffered logs & spans",
+      "tag": "telemetry bus",
+      "pos": [820, 450],
+      "size": [180, 64]
+    },
+    {
+      "id": "llm_provider",
+      "type": "external",
+      "label": "LLM Providers",
+      "sublabel": "OpenAI, Anthropic, Bedrock",
+      "tag": "inference vendor",
+      "pos": [1090, 60],
+      "size": [180, 66]
+    },
+    {
+      "id": "mcp_servers",
+      "type": "external",
+      "label": "Remote MCP Servers",
+      "sublabel": "Model Context Protocol",
+      "tag": "external protocol",
+      "pos": [1090, 190],
+      "size": [180, 66]
+    },
+    {
+      "id": "target_k8s",
+      "type": "external",
+      "label": "Kubernetes Cluster",
+      "sublabel": "Kube API & workloads",
+      "brand": "kubernetes",
+      "tag": "customer target",
+      "pos": [1090, 320],
+      "size": [180, 68]
+    },
+    {
+      "id": "incident_dest",
+      "type": "external",
+      "label": "Incident Delivery",
+      "sublabel": "Slack, Jira, PagerDuty",
+      "tag": "outbound delivery",
+      "pos": [1090, 450],
+      "size": [180, 64]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "External Ingress & Operator Domain",
+      "wraps": ["alert_ingress", "cli_terminal"],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "UpTimeEngine Core Control Plane",
+      "wraps": [
+        "prompt_engine", "api_server", "auth_manager", "local_cache",
+        "conversation_store", "agent_orchestrator", "safeguard_gate", "supabase_db",
+        "scheduled_worker", "task_queue", "toolset_manager", "telemetry_stream"
+      ],
+      "pad": 22
+    },
+    {
+      "kind": "security-group",
+      "label": "Agent Execution & Policy Sandbox",
+      "wraps": ["agent_orchestrator", "safeguard_gate", "toolset_manager"],
+      "pad": 14
+    },
+    {
+      "kind": "region",
+      "label": "External AI & Protocol Providers",
+      "wraps": ["llm_provider", "mcp_servers"],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Target Customer Infrastructure",
+      "wraps": ["target_k8s"],
+      "pad": 18
+    },
+    {
+      "kind": "region",
+      "label": "Incident Notification Services",
+      "wraps": ["incident_dest"],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "from": "alert_ingress",
+      "to": "api_server",
+      "label": "1. Ingest alert",
+      "variant": "emphasis"
+    },
+    {
+      "from": "api_server",
+      "to": "agent_orchestrator",
+      "label": "2. Dispatch",
+      "variant": "emphasis"
+    },
+    {
+      "from": "agent_orchestrator",
+      "to": "llm_provider",
+      "label": "3. Reason & call",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "via": [[640, 145], [1180, 145]]
+    },
+    {
+      "from": "agent_orchestrator",
+      "to": "safeguard_gate",
+      "label": "4. Verify",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDx": 40,
+      "labelDy": 24
+    },
+    {
+      "from": "safeguard_gate",
+      "to": "toolset_manager",
+      "label": "5. Execute",
+      "variant": "emphasis"
+    },
+    {
+      "from": "toolset_manager",
+      "to": "target_k8s",
+      "label": "6. Inspect",
+      "variant": "emphasis"
+    },
+    {
+      "from": "toolset_manager",
+      "to": "incident_dest",
+      "label": "7. Remediate",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "left"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Core Services & Agent Execution",
+      "items": [
+        "FastAPI Server & Typer CLI provide ingress endpoints, routing operational requests into the ToolCallingLLM reason-act loop.",
+        "Prompt Engine dynamically inspects registered skills and tool catalogs to compile scoped system prompts.",
+        "Safeguards & Approvals gate validates tool arguments and enforcement policies prior to any infrastructure execution."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Databases, Queues & State Boundaries",
+      "items": [
+        "Platform State DB (Supabase / PostgreSQL DAL) persists conversation states, OAuth tokens, and user feedback asynchronously.",
+        "Async Task Queue and OTel Event Stream manage long-running background tasks and buffer telemetry spans out-of-band.",
+        "Local Cache and Session History isolate local YAML configs and runtime traces from third-party persistence."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "External Services & Target Integrations",
+      "items": [
+        "Multi-provider LLM inference (OpenAI, Anthropic, Bedrock) normalizes provider access through LiteLLM abstractions.",
+        "Target Infrastructure (Kubernetes API server, Prometheus metrics) is accessed via scoped least-privilege credentials.",
+        "Remote MCP Servers and outbound Incident Destinations (Slack, Jira, PagerDuty) extend operational actions safely."
+      ]
+    }
+  ]
+}
